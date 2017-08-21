@@ -54,7 +54,7 @@ static NSString *const DCBrandSortCellID = @"DCBrandSortCell";
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.frame = CGRectMake(0, DCTopNavH, tableViewH, ScreenH - DCTopNavH - DCBottomTabH);
+        _tableView.frame = CGRectMake(0, 20, tableViewH, ScreenH  - DCBottomTabH -20);
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;
@@ -78,7 +78,7 @@ static NSString *const DCBrandSortCellID = @"DCBrandSortCell";
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.alwaysBounceVertical = YES;
-        _collectionView.frame = CGRectMake(tableViewH, DCTopNavH, ScreenW - tableViewH, ScreenH - DCTopNavH - DCBottomTabH);
+        _collectionView.frame = CGRectMake(tableViewH, 20, ScreenW - tableViewH, ScreenH - DCBottomTabH - 20);
         //注册Cell
         [_collectionView registerClass:[DCGoodsSortCell class] forCellWithReuseIdentifier:DCGoodsSortCellID];
         [_collectionView registerClass:[DCBrandSortCell class] forCellWithReuseIdentifier:DCBrandSortCellID];
@@ -95,6 +95,7 @@ static NSString *const DCBrandSortCellID = @"DCBrandSortCell";
     [super viewWillAppear:animated];
     if (self.navigationController.navigationBar.barTintColor == RGBA(231, 23, 37, 1.0))return;
     self.navigationController.navigationBar.barTintColor = RGBA(231, 23, 37, 1.0);
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)viewDidLoad {
@@ -110,7 +111,7 @@ static NSString *const DCBrandSortCellID = @"DCBrandSortCell";
 #pragma mark - initizlize
 - (void)setUpTab
 {
-    self.view.backgroundColor = DCBGColor;
+    self.view.backgroundColor = [UIColor darkGrayColor];
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -130,17 +131,17 @@ static NSString *const DCBrandSortCellID = @"DCBrandSortCell";
 - (void)setUpNav
 {
     
-    DCNavSearchBarView *searchBarVc = [[DCNavSearchBarView alloc] init];
-    searchBarVc.placeholdLabel.text = @"快速查找商品";
-    searchBarVc.frame = CGRectMake(20, 25, ScreenW - 40, 35);
-    searchBarVc.voiceButtonClickBlock = ^{
-        NSLog(@"语音点击回调");
-    };
-    searchBarVc.searchViewBlock = ^{
-        NSLog(@"搜索");
-    };
-    
-    self.navigationItem.titleView = searchBarVc;
+//    DCNavSearchBarView *searchBarVc = [[DCNavSearchBarView alloc] init];
+//    searchBarVc.placeholdLabel.text = @"快速查找商品";
+//    searchBarVc.frame = CGRectMake(20, 25, ScreenW - 40, 35);
+//    searchBarVc.voiceButtonClickBlock = ^{
+//        NSLog(@"语音点击回调");
+//    };
+//    searchBarVc.searchViewBlock = ^{
+//        NSLog(@"搜索");
+//    };
+//    
+//    self.navigationItem.titleView = searchBarVc;
 }
 
 
@@ -181,53 +182,54 @@ static NSString *const DCBrandSortCellID = @"DCBrandSortCell";
 #pragma mark - <UICollectionViewDelegate>
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *gridcell = nil;
-    if ([_mainItem[_mainItem.count - 1].title isEqualToString:@"热门品牌"]) {
-        if (indexPath.section == _mainItem.count - 1) {//品牌
-            DCBrandSortCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCBrandSortCellID forIndexPath:indexPath];
-            cell.subItem = _mainItem[indexPath.section].goods[indexPath.row];
-            gridcell = cell;
-        }
-        else {//商品
-            DCGoodsSortCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCGoodsSortCellID forIndexPath:indexPath];
-            cell.subItem = _mainItem[indexPath.section].goods[indexPath.row];
-            gridcell = cell;
-        }
-    }else{//商品
+//    if ([_mainItem[_mainItem.count - 1].title isEqualToString:@"热门品牌"]) {
+//        if (indexPath.section == _mainItem.count - 1) {//品牌
+//            DCBrandSortCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCBrandSortCellID forIndexPath:indexPath];
+//            cell.subItem = _mainItem[indexPath.section].goods[indexPath.row];
+//            gridcell = cell;
+//        }
+//        else {//商品
+//            DCGoodsSortCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCGoodsSortCellID forIndexPath:indexPath];
+//            cell.subItem = _mainItem[indexPath.section].goods[indexPath.row];
+//            gridcell = cell;
+//        }
+//    }else{//商品
         DCGoodsSortCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCGoodsSortCellID forIndexPath:indexPath];
         cell.subItem = _mainItem[indexPath.section].goods[indexPath.row];
         gridcell = cell;
-    }
+//    }
 
     return gridcell;
 }
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    
-    UICollectionReusableView *reusableview = nil;
-    if (kind == UICollectionElementKindSectionHeader){
-        
-        DCBrandsSortHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCBrandsSortHeadViewID forIndexPath:indexPath];
-        headerView.headTitle = _mainItem[indexPath.section];
-        reusableview = headerView;
-    }
-    return reusableview;
-}
+//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+//    
+//    UICollectionReusableView *reusableview = nil;
+////    if (kind == UICollectionElementKindSectionHeader){
+////        
+////        DCBrandsSortHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCBrandsSortHeadViewID forIndexPath:indexPath];
+////        headerView.headTitle = _mainItem[indexPath.section];
+////        reusableview = headerView;
+////    }
+//    return reusableview;
+//}
 #pragma mark - item宽高
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-        if ([_mainItem[_mainItem.count - 1].title isEqualToString:@"热门品牌"]) {
-            if (indexPath.section == _mainItem.count - 1) {//品牌
-                return CGSizeMake((ScreenW - tableViewH - 6)/3, 60);
-            }else{//商品
-                return CGSizeMake((ScreenW - tableViewH - 6)/3, (ScreenW - tableViewH - 6)/3 + 20);
-            }
-        }else{
+//        if ([_mainItem[_mainItem.count - 1].title isEqualToString:@"热门品牌"]) {
+//            if (indexPath.section == _mainItem.count - 1) {//品牌
+//                return CGSizeMake((ScreenW - tableViewH - 6)/3, 60);
+//            }else{//商品
+//                return CGSizeMake((ScreenW - tableViewH - 6)/3, (ScreenW - tableViewH - 6)/3 + 20);
+//            }
+//        }else{
             return CGSizeMake((ScreenW - tableViewH - 6)/3, (ScreenW - tableViewH - 6)/3 + 20);
-        }
-    return CGSizeZero;
+//        }
+//    return CGSizeZero;
 }
 
 #pragma mark - head宽高
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    return CGSizeMake(ScreenW, 25);
+//    return CGSizeMake(ScreenW, 25);
+    return CGSizeZero;
 }
 
 #pragma mark - foot宽高

@@ -15,8 +15,10 @@
 
 /* 商品标题 */
 @property (strong , nonatomic)NSString *goodTitle;
+
 /* 商品价格 */
 @property (strong , nonatomic)NSString *goodPrice;
+
 /* 商品小标题 */
 @property (strong , nonatomic)NSString *goodSubtitle;
 /* 商品图片 */

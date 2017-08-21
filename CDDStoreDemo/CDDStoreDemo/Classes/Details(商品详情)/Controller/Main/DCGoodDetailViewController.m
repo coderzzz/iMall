@@ -66,13 +66,13 @@
     
     [self setUpNav];
     
-    [self setUpTopButtonView];
+//    [self setUpTopButtonView];
     
     [self addChildViewController];
     
     [self setUpBottomButton];
     
-    [self acceptanceNote];
+//    [self acceptanceNote];
 }
 
 #pragma mark - initialize
@@ -89,65 +89,65 @@
 #pragma mark - 接受通知
 - (void)acceptanceNote
 {
-    //滚动到详情
-    __weak typeof(self)weakSlef = self;
-    _dcObserve = [[NSNotificationCenter defaultCenter]addObserverForName:@"scrollToDetailsPage" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-        [weakSlef topBottonClick:weakSlef.bgView.subviews[1]]; //跳转详情
-    }];
-    
-    _dcObserve = [[NSNotificationCenter defaultCenter]addObserverForName:@"scrollToCommentsPage" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-        [weakSlef topBottonClick:weakSlef.bgView.subviews[2]]; //跳转到评论界面
-    }];
+//    //滚动到详情
+//    __weak typeof(self)weakSlef = self;
+//    _dcObserve = [[NSNotificationCenter defaultCenter]addObserverForName:@"scrollToDetailsPage" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+//        [weakSlef topBottonClick:weakSlef.bgView.subviews[1]]; //跳转详情
+//    }];
+//    
+//    _dcObserve = [[NSNotificationCenter defaultCenter]addObserverForName:@"scrollToCommentsPage" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+//        [weakSlef topBottonClick:weakSlef.bgView.subviews[2]]; //跳转到评论界面
+//    }];
 }
 
 #pragma mark - 头部View
-- (void)setUpTopButtonView
-{
-    NSArray *titles = @[@"商品",@"详情",@"评价"];
-    CGFloat margin = 5;
-    _bgView = [[UIView alloc] init];
-    _bgView.dc_centerX = ScreenW * 0.5;
-    _bgView.dc_height = 44;
-    _bgView.dc_width = (_bgView.dc_height + margin) * titles.count;
-    _bgView.dc_y = 0;
-    self.navigationItem.titleView = _bgView;
-    
-    CGFloat buttonW = _bgView.dc_height;
-    CGFloat buttonH = _bgView.dc_height;
-    CGFloat buttonY = _bgView.dc_y;
-    for (NSInteger i = 0; i < titles.count; i++) {
-        
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setTitle:titles[i] forState:0];
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        button.tag = i;
-        button.titleLabel.font = PFR15Font;
-        [button addTarget:self action:@selector(topBottonClick:) forControlEvents:UIControlEventTouchUpInside];
-        CGFloat buttonX = i * (buttonW + margin);
-        
-        button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
-        
-        [_bgView addSubview:button];
-        
-    }
-    
-    UIButton *firstButton = _bgView.subviews[0];
-    [self topBottonClick:firstButton]; //默认选择第一个
-    
-    UIView *indicatorView = [[UIView alloc]init];
-    self.indicatorView = indicatorView;
-    indicatorView.backgroundColor = [firstButton titleColorForState:UIControlStateSelected];
-    
-    indicatorView.dc_height = 2;
-    indicatorView.dc_y = _bgView.dc_height - indicatorView.dc_height;
-    
-    [firstButton.titleLabel sizeToFit];
-    indicatorView.dc_width = firstButton.titleLabel.dc_width;
-    indicatorView.dc_centerX = firstButton.dc_centerX;
-    
-    [_bgView addSubview:indicatorView];
-
-}
+//- (void)setUpTopButtonView
+//{
+//    NSArray *titles = @[@"商品",@"详情",@"评价"];
+//    CGFloat margin = 5;
+//    _bgView = [[UIView alloc] init];
+//    _bgView.dc_centerX = ScreenW * 0.5;
+//    _bgView.dc_height = 44;
+//    _bgView.dc_width = (_bgView.dc_height + margin) * titles.count;
+//    _bgView.dc_y = 0;
+//    self.navigationItem.titleView = _bgView;
+//    
+//    CGFloat buttonW = _bgView.dc_height;
+//    CGFloat buttonH = _bgView.dc_height;
+//    CGFloat buttonY = _bgView.dc_y;
+//    for (NSInteger i = 0; i < titles.count; i++) {
+//        
+//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [button setTitle:titles[i] forState:0];
+//        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        button.tag = i;
+//        button.titleLabel.font = PFR15Font;
+//        [button addTarget:self action:@selector(topBottonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        CGFloat buttonX = i * (buttonW + margin);
+//        
+//        button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
+//        
+//        [_bgView addSubview:button];
+//        
+//    }
+//    
+//    UIButton *firstButton = _bgView.subviews[0];
+//    [self topBottonClick:firstButton]; //默认选择第一个
+//    
+//    UIView *indicatorView = [[UIView alloc]init];
+//    self.indicatorView = indicatorView;
+//    indicatorView.backgroundColor = [firstButton titleColorForState:UIControlStateSelected];
+//    
+//    indicatorView.dc_height = 2;
+//    indicatorView.dc_y = _bgView.dc_height - indicatorView.dc_height;
+//    
+//    [firstButton.titleLabel sizeToFit];
+//    indicatorView.dc_width = firstButton.titleLabel.dc_width;
+//    indicatorView.dc_centerX = firstButton.dc_centerX;
+//    
+//    [_bgView addSubview:indicatorView];
+//
+//}
 
 #pragma mark - 添加子控制器View
 -(void)addChildViewController
@@ -184,11 +184,11 @@
     };
     [self addChildViewController:goodBaseVc];
     
-    DCGoodParticularsViewController *goodParticularsVc = [[DCGoodParticularsViewController alloc] init];
-    [self addChildViewController:goodParticularsVc];
-    
-    DCGoodCommentViewController *goodCommentVc = [[DCGoodCommentViewController alloc] init];
-    [self addChildViewController:goodCommentVc];
+//    DCGoodParticularsViewController *goodParticularsVc = [[DCGoodParticularsViewController alloc] init];
+//    [self addChildViewController:goodParticularsVc];
+//    
+//    DCGoodCommentViewController *goodCommentVc = [[DCGoodCommentViewController alloc] init];
+//    [self addChildViewController:goodCommentVc];
 }
 
 #pragma mark - 底部按钮(收藏 购物车 加入购物车 立即购买)
@@ -242,48 +242,49 @@
 }
 
 #pragma mark - <UIScrollViewDelegate>
--(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-{
-    [self addChildViewController];
-}
-
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    NSInteger index = scrollView.contentOffset.x / scrollView.dc_width;
-    UIButton *button = _bgView.subviews[index];
-    
-    [self topBottonClick:button];
-    
-    [self addChildViewController];
-}
+//-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+//{
+//    [self addChildViewController];
+//}
+//
+//-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+//{
+//    NSInteger index = scrollView.contentOffset.x / scrollView.dc_width;
+//    UIButton *button = _bgView.subviews[index];
+//    
+//    [self topBottonClick:button];
+//    
+//    [self addChildViewController];
+//}
 
 #pragma mark - 导航栏设置
 - (void)setUpNav
 {
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"Details_Btn_More_normal"] WithHighlighted:[UIImage imageNamed:@"Details_Btn_More_normal"] Target:self action:@selector(toolItemClick)];
+//    self.navigationItem.rightBarButtonItem = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"Details_Btn_More_normal"] WithHighlighted:[UIImage imageNamed:@"Details_Btn_More_normal"] Target:self action:@selector(toolItemClick)];
+    self.title = @"商品详情";
 }
 
 
-#pragma mark - 点击事件
-#pragma mark - 头部按钮点击
-- (void)topBottonClick:(UIButton *)button
-{
-    button.selected = !button.selected;
-    [_selectBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    
-    _selectBtn = button;
-    
-    __weak typeof(self)weakSelf = self;
-    [UIView animateWithDuration:0.25 animations:^{
-        weakSelf.indicatorView.dc_width = button.titleLabel.dc_width;
-        weakSelf.indicatorView.dc_centerX = button.dc_centerX;
-    }];
-    
-    CGPoint offset = _scrollerView.contentOffset;
-    offset.x = _scrollerView.dc_width * button.tag;
-    [_scrollerView setContentOffset:offset animated:YES];
-}
+//#pragma mark - 点击事件
+//#pragma mark - 头部按钮点击
+//- (void)topBottonClick:(UIButton *)button
+//{
+//    button.selected = !button.selected;
+//    [_selectBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+//    
+//    _selectBtn = button;
+//    
+//    __weak typeof(self)weakSelf = self;
+//    [UIView animateWithDuration:0.25 animations:^{
+//        weakSelf.indicatorView.dc_width = button.titleLabel.dc_width;
+//        weakSelf.indicatorView.dc_centerX = button.dc_centerX;
+//    }];
+//    
+//    CGPoint offset = _scrollerView.contentOffset;
+//    offset.x = _scrollerView.dc_width * button.tag;
+//    [_scrollerView setContentOffset:offset animated:YES];
+//}
 
 #pragma mark - 点击工具条
 - (void)toolItemClick

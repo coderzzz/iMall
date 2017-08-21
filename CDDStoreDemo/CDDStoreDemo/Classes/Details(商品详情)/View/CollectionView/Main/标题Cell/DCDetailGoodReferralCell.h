@@ -10,10 +10,19 @@
 
 @interface DCDetailGoodReferralCell : UICollectionViewCell
 
-/* 商品标题 */
-@property (strong , nonatomic)UILabel *goodTitleLabel;
+
 /* 商品价格 */
 @property (strong , nonatomic)UILabel *goodPriceLabel;
+
+/* 商品原价 */
+@property (strong , nonatomic)UILabel *goodOldPriceLabel;
+
+/* 商品销量 */
+@property (strong , nonatomic)UILabel *goodCountLabel;
+
+/* 商品标题 */
+@property (strong , nonatomic)UILabel *goodTitleLabel;
+
 /* 商品小标题 */
 @property (strong , nonatomic)UILabel *goodSubtitleLabel;
 
@@ -21,7 +30,7 @@
 @property (strong , nonatomic)UIButton *preferentialButton;
 
 
-/** 分享按钮点击回调 */
-@property (nonatomic, copy) dispatch_block_t shareButtonClickBlock;
+///** 分享按钮点击回调 */
+//@property (nonatomic, copy) dispatch_block_t shareButtonClickBlock;
 
 @end
