@@ -8,6 +8,6 @@
 
 #import "DCDetailShowTypeCell.h"
 
-@interface DCShowTypeFourCell : DCDetailShowTypeCell
+@interface DCShowTypeFourCell : UICollectionViewCell
 
 @end

@@ -206,6 +206,8 @@
 		18DCA3CA1F1F4187008BF67E /* DCRecommendReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCA3081F1F4187008BF67E /* DCRecommendReusableView.m */; };
 		18DD85C71F0650F400F47095 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18DD85C61F0650F400F47095 /* Assets.xcassets */; };
 		18F64B1B1F0E03F500DB978C /* PingFang Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18F64B1A1F0E03F500DB978C /* PingFang Medium.ttf */; };
+		224B78C81F4C63E100BCC2F5 /* DC_TypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 224B78C71F4C63E100BCC2F5 /* DC_TypeView.m */; };
+		224B78CB1F4C778D00BCC2F5 /* DCDetailLikeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 224B78CA1F4C778D00BCC2F5 /* DCDetailLikeHeadView.m */; };
 		B4BD6CD985407C4066CE3D78 /* libPods-CDDStoreDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D28CF44E5CEBF6947E889711 /* libPods-CDDStoreDemo.a */; };
 		FE32B6021F356C1000A3061C /* MOBShareSDKHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B6011F356C1000A3061C /* MOBShareSDKHelper.m */; };
 		FE32B6241F356DF900A3061C /* AgreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B6061F356DF900A3061C /* AgreeViewController.m */; };
@@ -614,6 +616,10 @@
 		18DD85C61F0650F400F47095 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18DD85C81F06512100F47095 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		18F64B1A1F0E03F500DB978C /* PingFang Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Medium.ttf"; sourceTree = "<group>"; };
+		224B78C61F4C63E100BCC2F5 /* DC_TypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DC_TypeView.h; sourceTree = "<group>"; };
+		224B78C71F4C63E100BCC2F5 /* DC_TypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DC_TypeView.m; sourceTree = "<group>"; };
+		224B78C91F4C778D00BCC2F5 /* DCDetailLikeHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCDetailLikeHeadView.h; sourceTree = "<group>"; };
+		224B78CA1F4C778D00BCC2F5 /* DCDetailLikeHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCDetailLikeHeadView.m; sourceTree = "<group>"; };
 		B6042526F9488CF29434ADDB /* Pods-CDDStoreDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDDStoreDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CDDStoreDemo/Pods-CDDStoreDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D28CF44E5CEBF6947E889711 /* libPods-CDDStoreDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CDDStoreDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3736E949C41228120EF9FC0 /* Pods-CDDStoreDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDDStoreDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CDDStoreDemo/Pods-CDDStoreDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -1055,6 +1061,8 @@
 				18DCA1A41F1F4186008BF67E /* DCDetailShufflingHeadView.m */,
 				18DCA1A51F1F4186008BF67E /* DCFeatureHeaderView.h */,
 				18DCA1A61F1F4186008BF67E /* DCFeatureHeaderView.m */,
+				224B78C91F4C778D00BCC2F5 /* DCDetailLikeHeadView.h */,
+				224B78CA1F4C778D00BCC2F5 /* DCDetailLikeHeadView.m */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -1113,6 +1121,8 @@
 				18DCA1BB1F1F4186008BF67E /* DCShowTypeThreeCell.m */,
 				18DCA1BC1F1F4186008BF67E /* DCShowTypeTwoCell.h */,
 				18DCA1BD1F1F4186008BF67E /* DCShowTypeTwoCell.m */,
+				224B78C61F4C63E100BCC2F5 /* DC_TypeView.h */,
+				224B78C71F4C63E100BCC2F5 /* DC_TypeView.m */,
 			);
 			path = "自定义Cell";
 			sourceTree = "<group>";
@@ -2012,7 +2022,7 @@
 				TargetAttributes = {
 					187E67851E7D793000722607 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = NY7AR37MRX;
+						DevelopmentTeam = HL5KR37U7Y;
 						ProvisioningStyle = Automatic;
 					};
 					187E679E1E7D793100722607 = {
@@ -2233,6 +2243,7 @@
 				187E678B1E7D793100722607 /* main.m in Sources */,
 				18DCA35B1F1F4187008BF67E /* LBXScanResult.m in Sources */,
 				18DCA3181F1F4187008BF67E /* DCFiltrateHeaderView.m in Sources */,
+				224B78CB1F4C778D00BCC2F5 /* DCDetailLikeHeadView.m in Sources */,
 				FE32B6261F356DF900A3061C /* FixPassWordViewController.m in Sources */,
 				18DCA3191F1F4187008BF67E /* DCColonInsView.m in Sources */,
 				18DCA3A11F1F4187008BF67E /* DCHelpBackViewController.m in Sources */,
@@ -2319,6 +2330,7 @@
 				18DCA36E1F1F4187008BF67E /* XWTransitionAnimator.m in Sources */,
 				18DCA3821F1F4187008BF67E /* XWFilterAnimator+XWFlash.m in Sources */,
 				18DCA3A61F1F4187008BF67E /* DCSettingViewController.m in Sources */,
+				224B78C81F4C63E100BCC2F5 /* DC_TypeView.m in Sources */,
 				18DCA3751F1F4187008BF67E /* XWCircleSpreadAnimator.m in Sources */,
 				18DCA3C81F1F4187008BF67E /* DCEmptyCartView.m in Sources */,
 				18DCA3391F1F4187008BF67E /* DCCommentContentCell.m in Sources */,
@@ -2474,13 +2486,13 @@
 			baseConfigurationReference = B6042526F9488CF29434ADDB /* Pods-CDDStoreDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NY7AR37MRX;
+				DEVELOPMENT_TEAM = HL5KR37U7Y;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = CDDStoreDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = CDDStoreDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SVU.RocketsChen.CDDMall111;
+				PRODUCT_BUNDLE_IDENTIFIER = SVU.RocketsChen.CDDMall1118;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2490,13 +2502,13 @@
 			baseConfigurationReference = F3736E949C41228120EF9FC0 /* Pods-CDDStoreDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NY7AR37MRX;
+				DEVELOPMENT_TEAM = HL5KR37U7Y;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = CDDStoreDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = CDDStoreDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SVU.RocketsChen.CDDMall111;
+				PRODUCT_BUNDLE_IDENTIFIER = SVU.RocketsChen.CDDMall1118;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

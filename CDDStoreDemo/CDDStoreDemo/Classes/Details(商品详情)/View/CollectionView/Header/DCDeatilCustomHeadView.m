@@ -46,8 +46,8 @@
     self.backgroundColor = [UIColor whiteColor];
     
     _guessMarkLabel = [[UILabel alloc] init];
-    _guessMarkLabel.text = @"猜你喜欢";
-    _guessMarkLabel.font = PFR15Font;
+    _guessMarkLabel.text = @"商品详情";
+    _guessMarkLabel.font = PFR14Font;
     [self addSubview:_guessMarkLabel];
     
     _guessMarkLabel.frame = CGRectMake(DCMargin, 0, 200, self.dc_height);

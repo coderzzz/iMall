@@ -18,7 +18,7 @@
 
 // Views
 #import "DCLIRLButton.h"
-
+#import "DCDetailLikeHeadView.h"
 #import "DCDetailShufflingHeadView.h" //头部轮播
 #import "DCDetailGoodReferralCell.h"  //商品标题价格介绍
 #import "DCDetailShowTypeCell.h"      //种类
@@ -60,6 +60,7 @@
 //header
 static NSString *DCDetailShufflingHeadViewID = @"DCDetailShufflingHeadView";
 static NSString *DCDeatilCustomHeadViewID = @"DCDeatilCustomHeadView";
+static NSString *DCDetailLikeHeadViewID = @"DCDetailLikeHeadView";
 //cell
 static NSString *DCDetailGoodReferralCellID = @"DCDetailGoodReferralCell";
 
@@ -110,6 +111,8 @@ static NSArray *lastSeleArray_;
         //注册header
         [_collectionView registerClass:[DCDetailShufflingHeadView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailShufflingHeadViewID];
         [_collectionView registerClass:[DCDeatilCustomHeadView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDeatilCustomHeadViewID];
+        [_collectionView registerClass:[DCDeatilCustomHeadView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailLikeHeadViewID];
+        
         //注册Cell
         [_collectionView registerClass:[DCDetailGoodReferralCell class] forCellWithReuseIdentifier:DCDetailGoodReferralCellID];
         [_collectionView registerClass:[DCShowTypeOneCell class] forCellWithReuseIdentifier:DCShowTypeOneCellID];
@@ -240,11 +243,11 @@ static NSArray *lastSeleArray_;
 
 #pragma mark - <UICollectionViewDataSource>
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return (section == 0 ||section == 2 || section == 3) ? 1 : 1;
+    return section == 0  ? 2 : (section == 2) ? 2 : 1;
 }
 
 #pragma mark - <UICollectionViewDelegate>
@@ -259,11 +262,6 @@ static NSArray *lastSeleArray_;
             cell.goodTitleLabel.text = _goodTitle;
             cell.goodPriceLabel.text = [NSString stringWithFormat:@"¥ %@",_goodPrice];
             cell.goodSubtitleLabel.text = _goodSubtitle;
-////            [DCSpeedy dc_setUpLabel:cell.goodTitleLabel Content:_goodTitle IndentationFortheFirstLineWith:cell.goodPriceLabel.font.pointSize * 2];
-//            __weak typeof(self)weakSelf = self;
-//            cell.shareButtonClickBlock = ^{
-//                [weakSelf setUpAlterViewControllerWith:[DCShareToViewController new] WithDistance:300 WithDirection:XWDrawerAnimatorDirectionBottom WithParallaxEnable:NO WithFlipEnable:NO];
-//            };
             gridcell = cell;
         }else if (indexPath.row == 1){
             DCShowTypeFourCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCShowTypeFourCellID forIndexPath:indexPath];
@@ -320,8 +318,17 @@ static NSArray *lastSeleArray_;
             DCDetailShufflingHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailShufflingHeadViewID forIndexPath:indexPath];
             headerView.shufflingArray = _shufflingArray;
             reusableview = headerView;
+    
+        }else if (indexPath.section == 1){
+            DCDeatilCustomHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDeatilCustomHeadViewID forIndexPath:indexPath];
+            reusableview = headerView;
+        }else if (indexPath.section == 2){
+            DCDetailLikeHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailLikeHeadViewID forIndexPath:indexPath];
+            reusableview = headerView;
         }
     }
+
+    
     return reusableview;
 //        }else if (indexPath.section == 5){
 //            DCDeatilCustomHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDeatilCustomHeadViewID forIndexPath:indexPath];
@@ -345,7 +352,7 @@ static NSArray *lastSeleArray_;
 #pragma mark - item宽高
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) { //商品详情
-        return (indexPath.row == 0) ? CGSizeMake(ScreenW, [DCSpeedy dc_calculateTextSizeWithText:_goodTitle WithTextFont:16 WithMaxW:ScreenW - DCMargin * 6].height + [DCSpeedy dc_calculateTextSizeWithText:_goodPrice WithTextFont:20 WithMaxW:ScreenW - DCMargin * 6].height + [DCSpeedy dc_calculateTextSizeWithText:_goodSubtitle WithTextFont:12 WithMaxW:ScreenW - DCMargin * 6].height + DCMargin * 4) : CGSizeMake(ScreenW, 35);
+        return (indexPath.row == 0) ? CGSizeMake(ScreenW, [DCSpeedy dc_calculateTextSizeWithText:_goodTitle WithTextFont:16 WithMaxW:ScreenW - DCMargin * 6].height + [DCSpeedy dc_calculateTextSizeWithText:_goodPrice WithTextFont:20 WithMaxW:ScreenW - DCMargin * 6].height + [DCSpeedy dc_calculateTextSizeWithText:_goodSubtitle WithTextFont:12 WithMaxW:ScreenW - DCMargin * 6].height + DCMargin * 4) : CGSizeMake(ScreenW, 30);
 //    }else if (indexPath.section == 1){//商品属性选择
 //        return CGSizeMake(ScreenW, 60);
 //    }else if (indexPath.section == 2){//商品快递信息
@@ -355,7 +362,7 @@ static NSArray *lastSeleArray_;
 //    }else if (indexPath.section == 4){//商品评价部分展示
 //        return CGSizeMake(ScreenW, 270);
     }else if (indexPath.section == 2){//商品猜你喜欢
-        return CGSizeMake(ScreenW, (ScreenW / 3 + 60) * 2 + 20);
+        return CGSizeMake(ScreenW/2, 150);
     }else{
         return CGSizeZero;
     }
@@ -364,7 +371,7 @@ static NSArray *lastSeleArray_;
 
 #pragma mark - head宽高
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    return (section == 0) ?  CGSizeMake(ScreenW, ScreenH * 0.55) : ( section == 5) ? CGSizeMake(ScreenW, 30) : CGSizeZero;
+    return (section == 0) ?  CGSizeMake(ScreenW, ScreenH * 0.55) : ( section == 1 || section == 2) ? CGSizeMake(ScreenW, 30) : CGSizeZero;
 }
 
 #pragma mark - foot宽高
