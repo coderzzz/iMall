@@ -12,7 +12,7 @@
 #import "DCGoodBaseViewController.h"
 #import "DCGoodParticularsViewController.h"
 #import "DCGoodCommentViewController.h"
-#import "DCMyTrolleyViewController.h"
+
 #import "DCToolsViewController.h"
 // Models
 
@@ -299,10 +299,10 @@
         button.selected = !button.selected;
     }else if(button.tag == 1){
         NSLog(@"购物车");
-        DCMyTrolleyViewController *shopCarVc = [[DCMyTrolleyViewController alloc] init];
-        shopCarVc.isTabBar = YES;
-        shopCarVc.title = @"购物车";
-        [self.navigationController pushViewController:shopCarVc animated:YES];
+//        DCMyTrolleyViewController *shopCarVc = [[DCMyTrolleyViewController alloc] init];
+//        shopCarVc.isTabBar = YES;
+//        shopCarVc.title = @"购物车";
+//        [self.navigationController pushViewController:shopCarVc animated:YES];
     }else  if (button.tag == 2 || button.tag == 3) { //父控制器的加入购物车和立即购买
         //异步发通知
         dispatch_sync(dispatch_get_global_queue(0, 0), ^{

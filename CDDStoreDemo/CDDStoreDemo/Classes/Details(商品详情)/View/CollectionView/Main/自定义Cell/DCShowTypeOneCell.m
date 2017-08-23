@@ -22,7 +22,7 @@
 
 @interface DCShowTypeOneCell ()
 
-
+@property (nonatomic, strong) UIImageView *imageV;
 
 @end
 
@@ -40,24 +40,21 @@
 
 - (void)setUpData
 {
-    self.hintLabel.text = @"可选增值服务";
+    
+    self.imageV = [UIImageView new];
+    self.imageV.backgroundColor = [UIColor blueColor];
+    [self addSubview:self.imageV];
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
-    self.hintLabel.font = PFR12Font;
-    [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        [make.left.mas_equalTo(self.leftTitleLable.mas_right)setOffset:DCMargin];
-        make.width.mas_equalTo(self).multipliedBy(0.78);
-        make.centerY.mas_equalTo(self.leftTitleLable);
+    [self.imageV mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.edges.equalTo(self);
     }];
     
-    [self.hintLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.contentLabel);
-        [make.top.mas_equalTo(self.contentLabel.mas_bottom)setOffset:8];
-    }];
 }
 
 #pragma mark - Setter Getter Methods

@@ -199,11 +199,7 @@
 		18DCA3C31F1F4187008BF67E /* CountDownShop.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18DCA2F81F1F4187008BF67E /* CountDownShop.plist */; };
 		18DCA3C41F1F4187008BF67E /* GoodsGrid.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18DCA2F91F1F4187008BF67E /* GoodsGrid.plist */; };
 		18DCA3C51F1F4187008BF67E /* HomeHighGoods.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18DCA2FA1F1F4187008BF67E /* HomeHighGoods.plist */; };
-		18DCA3C61F1F4187008BF67E /* DCMyTrolleyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCA2FE1F1F4187008BF67E /* DCMyTrolleyViewController.m */; };
 		18DCA3C71F1F4187008BF67E /* DCRecommendItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCA3011F1F4187008BF67E /* DCRecommendItem.m */; };
-		18DCA3C81F1F4187008BF67E /* DCEmptyCartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCA3041F1F4187008BF67E /* DCEmptyCartView.m */; };
-		18DCA3C91F1F4187008BF67E /* DCRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCA3061F1F4187008BF67E /* DCRecommendCell.m */; };
-		18DCA3CA1F1F4187008BF67E /* DCRecommendReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCA3081F1F4187008BF67E /* DCRecommendReusableView.m */; };
 		18DD85C71F0650F400F47095 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18DD85C61F0650F400F47095 /* Assets.xcassets */; };
 		18F64B1B1F0E03F500DB978C /* PingFang Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18F64B1A1F0E03F500DB978C /* PingFang Medium.ttf */; };
 		224B78C81F4C63E100BCC2F5 /* DC_TypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 224B78C71F4C63E100BCC2F5 /* DC_TypeView.m */; };
@@ -221,6 +217,8 @@
 		FE32B6311F356DF900A3061C /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B61E1F356DF900A3061C /* LoginService.m */; };
 		FE32B6321F356DF900A3061C /* TimeCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B6201F356DF900A3061C /* TimeCounter.m */; };
 		FE32B6331F356DF900A3061C /* CustomUserGuideScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B6231F356DF900A3061C /* CustomUserGuideScrollView.m */; };
+		FEB124061F4D78D3002DAA55 /* LZCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEB124051F4D78D3002DAA55 /* LZCartViewController.m */; };
+		FEB124091F4D793C002DAA55 /* LZCartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEB124081F4D793C002DAA55 /* LZCartTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -603,16 +601,8 @@
 		18DCA2F81F1F4187008BF67E /* CountDownShop.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CountDownShop.plist; sourceTree = "<group>"; };
 		18DCA2F91F1F4187008BF67E /* GoodsGrid.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GoodsGrid.plist; sourceTree = "<group>"; };
 		18DCA2FA1F1F4187008BF67E /* HomeHighGoods.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HomeHighGoods.plist; sourceTree = "<group>"; };
-		18DCA2FD1F1F4187008BF67E /* DCMyTrolleyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMyTrolleyViewController.h; sourceTree = "<group>"; };
-		18DCA2FE1F1F4187008BF67E /* DCMyTrolleyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMyTrolleyViewController.m; sourceTree = "<group>"; };
 		18DCA3001F1F4187008BF67E /* DCRecommendItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRecommendItem.h; sourceTree = "<group>"; };
 		18DCA3011F1F4187008BF67E /* DCRecommendItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRecommendItem.m; sourceTree = "<group>"; };
-		18DCA3031F1F4187008BF67E /* DCEmptyCartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCEmptyCartView.h; sourceTree = "<group>"; };
-		18DCA3041F1F4187008BF67E /* DCEmptyCartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCEmptyCartView.m; sourceTree = "<group>"; };
-		18DCA3051F1F4187008BF67E /* DCRecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRecommendCell.h; sourceTree = "<group>"; };
-		18DCA3061F1F4187008BF67E /* DCRecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRecommendCell.m; sourceTree = "<group>"; };
-		18DCA3071F1F4187008BF67E /* DCRecommendReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRecommendReusableView.h; sourceTree = "<group>"; };
-		18DCA3081F1F4187008BF67E /* DCRecommendReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRecommendReusableView.m; sourceTree = "<group>"; };
 		18DD85C61F0650F400F47095 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18DD85C81F06512100F47095 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		18F64B1A1F0E03F500DB978C /* PingFang Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Medium.ttf"; sourceTree = "<group>"; };
@@ -643,6 +633,10 @@
 		FE32B6201F356DF900A3061C /* TimeCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeCounter.m; sourceTree = "<group>"; };
 		FE32B6221F356DF900A3061C /* CustomUserGuideScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUserGuideScrollView.h; sourceTree = "<group>"; };
 		FE32B6231F356DF900A3061C /* CustomUserGuideScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUserGuideScrollView.m; sourceTree = "<group>"; };
+		FEB124041F4D78D3002DAA55 /* LZCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCartViewController.h; sourceTree = "<group>"; };
+		FEB124051F4D78D3002DAA55 /* LZCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCartViewController.m; sourceTree = "<group>"; };
+		FEB124071F4D793C002DAA55 /* LZCartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCartTableViewCell.h; sourceTree = "<group>"; };
+		FEB124081F4D793C002DAA55 /* LZCartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCartTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -728,12 +722,12 @@
 				18DCA2AE1F1F4186008BF67E /* Main */,
 				18DCA13C1F1F4186008BF67E /* AppDelegate */,
 				FE32B6031F356DF900A3061C /* Login */,
-				18DCA2811F1F4186008BF67E /* Home(首页) */,
-				18DCA1761F1F4186008BF67E /* Details(商品详情) */,
-				18DCA13F1F1F4186008BF67E /* Classify(分类) */,
-				18DCA2B71F1F4186008BF67E /* PersonalCenter(个人中心) */,
-				18DCA2FB1F1F4187008BF67E /* ShoppingCar(购物车) */,
-				18DCA1D91F1F4186008BF67E /* Expand(扩展) */,
+				18DCA2811F1F4186008BF67E /* Home */,
+				18DCA1761F1F4186008BF67E /* Details */,
+				18DCA13F1F1F4186008BF67E /* Classify */,
+				18DCA2B71F1F4186008BF67E /* PersonalCenter */,
+				18DCA2FB1F1F4187008BF67E /* ShoppingCar */,
+				18DCA1D91F1F4186008BF67E /* Expand */,
 				18DCA2E11F1F4187008BF67E /* Resource */,
 			);
 			path = Classes;
@@ -748,13 +742,14 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		18DCA13F1F1F4186008BF67E /* Classify(分类) */ = {
+		18DCA13F1F1F4186008BF67E /* Classify */ = {
 			isa = PBXGroup;
 			children = (
 				18DCA1401F1F4186008BF67E /* Controller */,
 				18DCA14B1F1F4186008BF67E /* Model */,
 				18DCA1561F1F4186008BF67E /* View */,
 			);
+			name = Classify;
 			path = "Classify(分类)";
 			sourceTree = "<group>";
 		};
@@ -907,13 +902,14 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
-		18DCA1761F1F4186008BF67E /* Details(商品详情) */ = {
+		18DCA1761F1F4186008BF67E /* Details */ = {
 			isa = PBXGroup;
 			children = (
 				18DCA1771F1F4186008BF67E /* Controller */,
 				18DCA18D1F1F4186008BF67E /* Model */,
 				18DCA19B1F1F4186008BF67E /* View */,
 			);
+			name = Details;
 			path = "Details(商品详情)";
 			sourceTree = "<group>";
 		};
@@ -1184,7 +1180,7 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
-		18DCA1D91F1F4186008BF67E /* Expand(扩展) */ = {
+		18DCA1D91F1F4186008BF67E /* Expand */ = {
 			isa = PBXGroup;
 			children = (
 				18DCA1DA1F1F4186008BF67E /* Category(分类) */,
@@ -1194,6 +1190,7 @@
 				18DCA1EA1F1F4186008BF67E /* Tools(工具) */,
 				18DCA1F91F1F4186008BF67E /* Vendors(第三方) */,
 			);
+			name = Expand;
 			path = "Expand(扩展)";
 			sourceTree = "<group>";
 		};
@@ -1542,13 +1539,14 @@
 			path = XWMagicMoveAnimator;
 			sourceTree = "<group>";
 		};
-		18DCA2811F1F4186008BF67E /* Home(首页) */ = {
+		18DCA2811F1F4186008BF67E /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				18DCA2821F1F4186008BF67E /* Controller */,
 				18DCA2861F1F4186008BF67E /* Model */,
 				18DCA2891F1F4186008BF67E /* View */,
 			);
+			name = Home;
 			path = "Home(首页)";
 			sourceTree = "<group>";
 		};
@@ -1678,13 +1676,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		18DCA2B71F1F4186008BF67E /* PersonalCenter(个人中心) */ = {
+		18DCA2B71F1F4186008BF67E /* PersonalCenter */ = {
 			isa = PBXGroup;
 			children = (
 				18DCA2B81F1F4186008BF67E /* Controller */,
 				18DCA2C91F1F4187008BF67E /* Model */,
 				18DCA2D21F1F4187008BF67E /* View */,
 			);
+			name = PersonalCenter;
 			path = "PersonalCenter(个人中心)";
 			sourceTree = "<group>";
 		};
@@ -1835,21 +1834,22 @@
 			path = "首页Plist";
 			sourceTree = "<group>";
 		};
-		18DCA2FB1F1F4187008BF67E /* ShoppingCar(购物车) */ = {
+		18DCA2FB1F1F4187008BF67E /* ShoppingCar */ = {
 			isa = PBXGroup;
 			children = (
 				18DCA2FC1F1F4187008BF67E /* Controller */,
 				18DCA2FF1F1F4187008BF67E /* Model */,
 				18DCA3021F1F4187008BF67E /* View */,
 			);
+			name = ShoppingCar;
 			path = "ShoppingCar(购物车)";
 			sourceTree = "<group>";
 		};
 		18DCA2FC1F1F4187008BF67E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				18DCA2FD1F1F4187008BF67E /* DCMyTrolleyViewController.h */,
-				18DCA2FE1F1F4187008BF67E /* DCMyTrolleyViewController.m */,
+				FEB124041F4D78D3002DAA55 /* LZCartViewController.h */,
+				FEB124051F4D78D3002DAA55 /* LZCartViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1866,12 +1866,8 @@
 		18DCA3021F1F4187008BF67E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				18DCA3031F1F4187008BF67E /* DCEmptyCartView.h */,
-				18DCA3041F1F4187008BF67E /* DCEmptyCartView.m */,
-				18DCA3051F1F4187008BF67E /* DCRecommendCell.h */,
-				18DCA3061F1F4187008BF67E /* DCRecommendCell.m */,
-				18DCA3071F1F4187008BF67E /* DCRecommendReusableView.h */,
-				18DCA3081F1F4187008BF67E /* DCRecommendReusableView.m */,
+				FEB124071F4D793C002DAA55 /* LZCartTableViewCell.h */,
+				FEB124081F4D793C002DAA55 /* LZCartTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2022,7 +2018,7 @@
 				TargetAttributes = {
 					187E67851E7D793000722607 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = HL5KR37U7Y;
+						DevelopmentTeam = 6TZ958XNMU;
 						ProvisioningStyle = Automatic;
 					};
 					187E679E1E7D793100722607 = {
@@ -2171,12 +2167,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				18DCA3911F1F4187008BF67E /* DCGoodsSurplusCell.m in Sources */,
-				18DCA3C91F1F4187008BF67E /* DCRecommendCell.m in Sources */,
 				18DCA3621F1F4187008BF67E /* ZXingWrapper.m in Sources */,
 				18DCA30C1F1F4187008BF67E /* DCFootprintGoodsViewController.m in Sources */,
 				18DCA3C71F1F4187008BF67E /* DCRecommendItem.m in Sources */,
 				18DCA3161F1F4187008BF67E /* DCFiltrateAttrCell.m in Sources */,
 				18DCA33E1F1F4187008BF67E /* DCPartCommentHeadView.m in Sources */,
+				FEB124061F4D78D3002DAA55 /* LZCartViewController.m in Sources */,
 				18DCA3091F1F4187008BF67E /* AppDelegate.m in Sources */,
 				18DCA3851F1F4187008BF67E /* XWFilterAnimator+XWPageCurl.m in Sources */,
 				18DCA3B01F1F4187008BF67E /* DCMySelfHeadView.m in Sources */,
@@ -2258,7 +2254,6 @@
 				18DCA30F1F1F4187008BF67E /* DCClassGoodsItem.m in Sources */,
 				18DCA33D1F1F4187008BF67E /* DCDetailPartCommentCell.m in Sources */,
 				FE32B6021F356C1000A3061C /* MOBShareSDKHelper.m in Sources */,
-				18DCA3CA1F1F4187008BF67E /* DCRecommendReusableView.m in Sources */,
 				18DCA35D1F1F4187008BF67E /* LBXScanView.m in Sources */,
 				18DCA3111F1F4187008BF67E /* DCFiltrateItem.m in Sources */,
 				18DCA3541F1F4187008BF67E /* JKDBModel.m in Sources */,
@@ -2318,6 +2313,7 @@
 				18DCA3A21F1F4187008BF67E /* DCMySelfMessageViewController.m in Sources */,
 				18DCA31D1F1F4187008BF67E /* DCFootprintCell.m in Sources */,
 				18DCA3201F1F4187008BF67E /* DCGoodBaseViewController.m in Sources */,
+				FEB124091F4D793C002DAA55 /* LZCartTableViewCell.m in Sources */,
 				18DCA3561F1F4187008BF67E /* PPNumberButton.m in Sources */,
 				18DCA30E1F1F4187008BF67E /* DCCalssSubItem.m in Sources */,
 				FE32B6241F356DF900A3061C /* AgreeViewController.m in Sources */,
@@ -2332,9 +2328,7 @@
 				18DCA3A61F1F4187008BF67E /* DCSettingViewController.m in Sources */,
 				224B78C81F4C63E100BCC2F5 /* DC_TypeView.m in Sources */,
 				18DCA3751F1F4187008BF67E /* XWCircleSpreadAnimator.m in Sources */,
-				18DCA3C81F1F4187008BF67E /* DCEmptyCartView.m in Sources */,
 				18DCA3391F1F4187008BF67E /* DCCommentContentCell.m in Sources */,
-				18DCA3C61F1F4187008BF67E /* DCMyTrolleyViewController.m in Sources */,
 				18DCA3331F1F4187008BF67E /* DCDetailShowTypeCell.m in Sources */,
 				18DCA3791F1F4187008BF67E /* XWCoolAnimator+XWMiddlePageFlip.m in Sources */,
 				18DCA3351F1F4187008BF67E /* DCShowTypeOneCell.m in Sources */,
@@ -2486,13 +2480,13 @@
 			baseConfigurationReference = B6042526F9488CF29434ADDB /* Pods-CDDStoreDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HL5KR37U7Y;
+				DEVELOPMENT_TEAM = 6TZ958XNMU;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = CDDStoreDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = CDDStoreDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SVU.RocketsChen.CDDMall1118;
+				PRODUCT_BUNDLE_IDENTIFIER = SVU.RocketsChen.CDDMall1116111;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2502,13 +2496,13 @@
 			baseConfigurationReference = F3736E949C41228120EF9FC0 /* Pods-CDDStoreDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HL5KR37U7Y;
+				DEVELOPMENT_TEAM = 6TZ958XNMU;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = CDDStoreDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = CDDStoreDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SVU.RocketsChen.CDDMall1118;
+				PRODUCT_BUNDLE_IDENTIFIER = SVU.RocketsChen.CDDMall1116111;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

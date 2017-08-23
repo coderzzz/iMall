@@ -23,7 +23,5 @@
 /** 属性 */
 @property (nonatomic, copy ,readonly) NSString *nature;
 
-/* 头部轮播 */
-@property (copy , nonatomic , readonly)NSArray *images;
-
+@property (assign,nonatomic) NSInteger count;
 @end

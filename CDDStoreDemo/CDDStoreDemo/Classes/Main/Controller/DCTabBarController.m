@@ -63,7 +63,7 @@
                               MallImgKey    : @"tabr_02_up",
                               MallSelImgKey : @"tabr_02_down"},
                             
-                            @{MallClassKey  : @"DCMyTrolleyViewController",
+                            @{MallClassKey  : @"LZCartViewController",
                               MallTitleKey  : @"购物车",
                               MallImgKey    : @"tabr_04_up",
                               MallSelImgKey : @"tabr_04_down"},

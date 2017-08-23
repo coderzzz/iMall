@@ -16,6 +16,7 @@
     if (self) {
         
         UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        lab.backgroundColor = [UIColor whiteColor];
         lab.font = PFR14Font;
         lab.textAlignment = NSTextAlignmentCenter;
         lab.text = @"为你推荐";

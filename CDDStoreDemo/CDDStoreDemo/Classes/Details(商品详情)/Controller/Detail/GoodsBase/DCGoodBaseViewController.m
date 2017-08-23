@@ -55,6 +55,8 @@
 /* 通知 */
 @property (weak ,nonatomic) id dcObj;
 
+@property (assign, nonatomic) BOOL selected;
+
 @end
 
 //header
@@ -111,7 +113,7 @@ static NSArray *lastSeleArray_;
         //注册header
         [_collectionView registerClass:[DCDetailShufflingHeadView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailShufflingHeadViewID];
         [_collectionView registerClass:[DCDeatilCustomHeadView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDeatilCustomHeadViewID];
-        [_collectionView registerClass:[DCDeatilCustomHeadView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailLikeHeadViewID];
+        [_collectionView registerClass:[DCDetailLikeHeadView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailLikeHeadViewID];
         
         //注册Cell
         [_collectionView registerClass:[DCDetailGoodReferralCell class] forCellWithReuseIdentifier:DCDetailGoodReferralCellID];
@@ -152,9 +154,9 @@ static NSArray *lastSeleArray_;
     
     [self setUpViewScroller];
     
-    [self setUpGoodsWKWebView];
+//    [self setUpGoodsWKWebView];
     
-    [self setUpSuspendView];
+//    [self setUpSuspendView];
     
     [self acceptanceNote];
 }
@@ -175,12 +177,7 @@ static NSArray *lastSeleArray_;
 #pragma mark - 接受通知
 - (void)acceptanceNote
 {
-    //分享通知
-    __weak typeof(self)weakSelf = self;
-    _dcObj = [[NSNotificationCenter defaultCenter]addObserverForName:@"shareAlterView" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-        [weakSelf selfAlterViewback];
-        [weakSelf setUpAlterViewControllerWith:[DCShareToViewController new] WithDistance:300 WithDirection:XWDrawerAnimatorDirectionBottom WithParallaxEnable:NO WithFlipEnable:NO];
-    }];
+
     //加入购物车或点击直接购买通知
     _dcObj = [[NSNotificationCenter defaultCenter]addObserverForName:@"ClikAddOrBuy" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         
@@ -188,12 +185,17 @@ static NSArray *lastSeleArray_;
         __weak typeof(self)weakSelf = self;
         dcFeaVc.userChooseBlock = ^(NSMutableArray *seleArray, NSInteger num, NSInteger tag) { //第一次更新选择的属性
             NSString *result = [NSString stringWithFormat:@"%@ %zd件",[seleArray componentsJoinedByString:@"，"],num];
-            weakSelf.cell.contentLabel.text = result;
+            NSLog(@"%@",result);
+            
+            weakSelf.selected = YES;
+            NSLog(@"加入购物车");
         };
         
-        if ([weakSelf.cell.leftTitleLable.text isEqual:@"已选"]) {
+        if (weakSelf.selected) {
             
             if ([note.userInfo[@"buttonTag"] isEqualToString:@"2"]) { //加入购物车
+                
+                NSLog(@"加入购物车");
                 
             }else if ([note.userInfo[@"buttonTag"] isEqualToString:@"3"]){//立即购买
 
@@ -223,22 +225,22 @@ static NSArray *lastSeleArray_;
 #pragma mark - 记载图文详情
 - (void)setUpGoodsWKWebView
 {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://weibo.com/u/5605532343"]];
-    [self.webView loadRequest:request];
-    
-    //下拉返回商品详情View
-    UIView *topHitView = [[UIView alloc] init];
-    topHitView.frame = CGRectMake(0, -35, ScreenW, 35);
-    DCLIRLButton *topHitButton = [DCLIRLButton buttonWithType:UIButtonTypeCustom];
-    topHitButton.imageView.transform = CGAffineTransformRotate(topHitButton.imageView.transform, M_PI); //旋转
-    [topHitButton setImage:[UIImage imageNamed:@"Details_Btn_Up"] forState:UIControlStateNormal];
-    [topHitButton setTitle:@"下拉返回商品详情" forState:UIControlStateNormal];
-    topHitButton.titleLabel.font = PFR12Font;
-    [topHitButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [topHitView addSubview:topHitButton];
-    topHitButton.frame = topHitView.bounds;
-    
-    [self.webView.scrollView addSubview:topHitView];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://weibo.com/u/5605532343"]];
+//    [self.webView loadRequest:request];
+//    
+//    //下拉返回商品详情View
+//    UIView *topHitView = [[UIView alloc] init];
+//    topHitView.frame = CGRectMake(0, -35, ScreenW, 35);
+//    DCLIRLButton *topHitButton = [DCLIRLButton buttonWithType:UIButtonTypeCustom];
+//    topHitButton.imageView.transform = CGAffineTransformRotate(topHitButton.imageView.transform, M_PI); //旋转
+//    [topHitButton setImage:[UIImage imageNamed:@"Details_Btn_Up"] forState:UIControlStateNormal];
+//    [topHitButton setTitle:@"下拉返回商品详情" forState:UIControlStateNormal];
+//    topHitButton.titleLabel.font = PFR12Font;
+//    [topHitButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+//    [topHitView addSubview:topHitButton];
+//    topHitButton.frame = topHitView.bounds;
+//    
+//    [self.webView.scrollView addSubview:topHitView];
 }
 
 #pragma mark - <UICollectionViewDataSource>
@@ -269,23 +271,12 @@ static NSArray *lastSeleArray_;
             gridcell = cell;
         }
 
-//    }else if (indexPath.section == 1 || indexPath.section == 2 ){
-//        if (indexPath.section == 1) {
-//            DCShowTypeOneCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCShowTypeOneCellID forIndexPath:indexPath];
-//            _cell = cell;
-//            cell.leftTitleLable.text = @"点击";
-//            cell.contentLabel.text = @"请选择该商品属性";
-//            gridcell = cell;
-//        }else{
-//            if (indexPath.row == 0) {
-//                DCShowTypeTwoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCShowTypeTwoCellID forIndexPath:indexPath];
-//                cell.contentLabel.text = userInfo.defaultAddress; //地址
-//                gridcell = cell;
-//            }else{
-//                DCShowTypeThreeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCShowTypeThreeCellID forIndexPath:indexPath];
-//                gridcell = cell;
-//            }
-//        }
+    }else if (indexPath.section == 1  ){
+        
+            DCShowTypeOneCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCShowTypeOneCellID forIndexPath:indexPath];
+            _cell = cell;
+            gridcell = cell;
+       
 //     }else if (indexPath.section == 3){
 //        DCDetailServicetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCDetailServicetCellID forIndexPath:indexPath];
 //        NSArray *btnTitles = @[@"以旧换新",@"可选增值服务"];
@@ -361,6 +352,9 @@ static NSArray *lastSeleArray_;
 //        return CGSizeMake(ScreenW / 2, 60);
 //    }else if (indexPath.section == 4){//商品评价部分展示
 //        return CGSizeMake(ScreenW, 270);
+        
+    }else if (indexPath.section == 1){//商品图片
+        return CGSizeMake(ScreenW, 250);
     }else if (indexPath.section == 2){//商品猜你喜欢
         return CGSizeMake(ScreenW/2, 150);
     }else{
@@ -391,7 +385,7 @@ static NSArray *lastSeleArray_;
         dcFeaVc.userChooseBlock = ^(NSMutableArray *seleArray, NSInteger num, NSInteger tag) { //更新选择的属性
             if (lastSeleArray_ == seleArray && lastNum_ == num)return; //传递过来的数据判断与上一次的相同则返回
             NSString *result = [NSString stringWithFormat:@"%@ %zd件",[seleArray componentsJoinedByString:@"，"],num];
-            weakSelf.cell.contentLabel.text = result;
+//            weakSelf.cell.contentLabel.text = result;
             lastNum_ = num;
             lastSeleArray_ = seleArray;
             if (tag == 0) {
@@ -401,8 +395,8 @@ static NSArray *lastSeleArray_;
                 [weakSelf.navigationController pushViewController:dcFillVc animated:YES];
             }
             
-            if ([weakSelf.cell.leftTitleLable.text isEqualToString:@"已选"])return;
-            weakSelf.cell.leftTitleLable.text = @"已选";
+//            if ([weakSelf.cell.leftTitleLable.text isEqualToString:@"已选"])return;
+//            weakSelf.cell.leftTitleLable.text = @"已选";
         };
         dcFeaVc.lastNum = lastNum_;
         dcFeaVc.lastSeleArray = lastSeleArray_;
