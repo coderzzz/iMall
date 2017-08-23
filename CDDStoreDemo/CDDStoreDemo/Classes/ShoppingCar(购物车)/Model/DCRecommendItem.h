@@ -23,5 +23,7 @@
 /** 属性 */
 @property (nonatomic, copy ,readonly) NSString *nature;
 
+@property (nonatomic, retain) NSArray *images;
+
 @property (assign,nonatomic) NSInteger count;
 @end
