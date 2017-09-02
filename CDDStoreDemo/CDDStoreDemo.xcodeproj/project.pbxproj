@@ -204,6 +204,14 @@
 		18F64B1B1F0E03F500DB978C /* PingFang Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18F64B1A1F0E03F500DB978C /* PingFang Medium.ttf */; };
 		224B78C81F4C63E100BCC2F5 /* DC_TypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 224B78C71F4C63E100BCC2F5 /* DC_TypeView.m */; };
 		224B78CB1F4C778D00BCC2F5 /* DCDetailLikeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 224B78CA1F4C778D00BCC2F5 /* DCDetailLikeHeadView.m */; };
+		224B78CF1F5A4FD200BCC2F5 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224B78CD1F5A4FD200BCC2F5 /* OrderDetailViewController.m */; };
+		224B78D01F5A4FD200BCC2F5 /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224B78CE1F5A4FD200BCC2F5 /* OrderDetailViewController.xib */; };
+		22FEC2621F5A697A00CC6F18 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FEC2601F5A697A00CC6F18 /* AddressCell.m */; };
+		22FEC2631F5A697A00CC6F18 /* AddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FEC2611F5A697A00CC6F18 /* AddressCell.xib */; };
+		22FEC2671F5A6C8600CC6F18 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FEC2651F5A6C8600CC6F18 /* ProductCell.m */; };
+		22FEC2681F5A6C8600CC6F18 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FEC2661F5A6C8600CC6F18 /* ProductCell.xib */; };
+		22FEC26C1F5A6F9700CC6F18 /* PayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FEC26A1F5A6F9700CC6F18 /* PayCell.m */; };
+		22FEC26D1F5A6F9700CC6F18 /* PayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FEC26B1F5A6F9700CC6F18 /* PayCell.xib */; };
 		B4BD6CD985407C4066CE3D78 /* libPods-CDDStoreDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D28CF44E5CEBF6947E889711 /* libPods-CDDStoreDemo.a */; };
 		FE32B6021F356C1000A3061C /* MOBShareSDKHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B6011F356C1000A3061C /* MOBShareSDKHelper.m */; };
 		FE32B6241F356DF900A3061C /* AgreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B6061F356DF900A3061C /* AgreeViewController.m */; };
@@ -610,6 +618,18 @@
 		224B78C71F4C63E100BCC2F5 /* DC_TypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DC_TypeView.m; sourceTree = "<group>"; };
 		224B78C91F4C778D00BCC2F5 /* DCDetailLikeHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCDetailLikeHeadView.h; sourceTree = "<group>"; };
 		224B78CA1F4C778D00BCC2F5 /* DCDetailLikeHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCDetailLikeHeadView.m; sourceTree = "<group>"; };
+		224B78CC1F5A4FD200BCC2F5 /* OrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
+		224B78CD1F5A4FD200BCC2F5 /* OrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
+		224B78CE1F5A4FD200BCC2F5 /* OrderDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
+		22FEC25F1F5A697A00CC6F18 /* AddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressCell.h; sourceTree = "<group>"; };
+		22FEC2601F5A697A00CC6F18 /* AddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressCell.m; sourceTree = "<group>"; };
+		22FEC2611F5A697A00CC6F18 /* AddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressCell.xib; sourceTree = "<group>"; };
+		22FEC2641F5A6C8600CC6F18 /* ProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
+		22FEC2651F5A6C8600CC6F18 /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
+		22FEC2661F5A6C8600CC6F18 /* ProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
+		22FEC2691F5A6F9700CC6F18 /* PayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayCell.h; sourceTree = "<group>"; };
+		22FEC26A1F5A6F9700CC6F18 /* PayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayCell.m; sourceTree = "<group>"; };
+		22FEC26B1F5A6F9700CC6F18 /* PayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayCell.xib; sourceTree = "<group>"; };
 		B6042526F9488CF29434ADDB /* Pods-CDDStoreDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDDStoreDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CDDStoreDemo/Pods-CDDStoreDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D28CF44E5CEBF6947E889711 /* libPods-CDDStoreDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CDDStoreDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3736E949C41228120EF9FC0 /* Pods-CDDStoreDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDDStoreDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CDDStoreDemo/Pods-CDDStoreDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -1850,6 +1870,18 @@
 			children = (
 				FEB124041F4D78D3002DAA55 /* LZCartViewController.h */,
 				FEB124051F4D78D3002DAA55 /* LZCartViewController.m */,
+				224B78CC1F5A4FD200BCC2F5 /* OrderDetailViewController.h */,
+				224B78CD1F5A4FD200BCC2F5 /* OrderDetailViewController.m */,
+				224B78CE1F5A4FD200BCC2F5 /* OrderDetailViewController.xib */,
+				22FEC25F1F5A697A00CC6F18 /* AddressCell.h */,
+				22FEC2601F5A697A00CC6F18 /* AddressCell.m */,
+				22FEC2611F5A697A00CC6F18 /* AddressCell.xib */,
+				22FEC2641F5A6C8600CC6F18 /* ProductCell.h */,
+				22FEC2651F5A6C8600CC6F18 /* ProductCell.m */,
+				22FEC2661F5A6C8600CC6F18 /* ProductCell.xib */,
+				22FEC2691F5A6F9700CC6F18 /* PayCell.h */,
+				22FEC26A1F5A6F9700CC6F18 /* PayCell.m */,
+				22FEC26B1F5A6F9700CC6F18 /* PayCell.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2066,6 +2098,7 @@
 				18DCA3571F1F4187008BF67E /* CodeScan.bundle in Resources */,
 				18DCA3711F1F4187008BF67E /* restrictedshine.tiff in Resources */,
 				18DCA36F1F1F4187008BF67E /* line.png in Resources */,
+				22FEC26D1F5A6F9700CC6F18 /* PayCell.xib in Resources */,
 				18DCA3B31F1F4187008BF67E /* ClassiftyGoods01.plist in Resources */,
 				18DCA3BA1F1F4187008BF67E /* shareTerrace.plist in Resources */,
 				FE32B6271F356DF900A3061C /* FixPassWordViewController.xib in Resources */,
@@ -2075,15 +2108,18 @@
 				18DCA3B91F1F4187008BF67E /* FootprintGoods.plist in Resources */,
 				18DCA3BD1F1F4187008BF67E /* DeliveryAdress.plist in Resources */,
 				18DCA3BE1F1F4187008BF67E /* MessageNote.plist in Resources */,
+				224B78D01F5A4FD200BCC2F5 /* OrderDetailViewController.xib in Resources */,
 				187E67991E7D793100722607 /* LaunchScreen.storyboard in Resources */,
 				18DCA3C11F1F4187008BF67E /* YouLikeGoods.plist in Resources */,
 				18DCA3C41F1F4187008BF67E /* GoodsGrid.plist in Resources */,
 				18DCA3701F1F4187008BF67E /* mask.jpg in Resources */,
 				18DCA3661F1F4187008BF67E /* ScanResultViewController.xib in Resources */,
 				18DCA3C01F1F4187008BF67E /* MyRecreationFlow.plist in Resources */,
+				22FEC2631F5A697A00CC6F18 /* AddressCell.xib in Resources */,
 				18F64B1B1F0E03F500DB978C /* PingFang Medium.ttf in Resources */,
 				18DD85C71F0650F400F47095 /* Assets.xcassets in Resources */,
 				18DCA34F1F1F4187008BF67E /* addressData.plist in Resources */,
+				22FEC2681F5A6C8600CC6F18 /* ProductCell.xib in Resources */,
 				18DCA3C31F1F4187008BF67E /* CountDownShop.plist in Resources */,
 				18DCA3B21F1F4187008BF67E /* ClasiftyGoods.plist in Resources */,
 				18DCA3B71F1F4187008BF67E /* DetailRecommend.plist in Resources */,
@@ -2171,6 +2207,7 @@
 				18DCA30C1F1F4187008BF67E /* DCFootprintGoodsViewController.m in Sources */,
 				18DCA3C71F1F4187008BF67E /* DCRecommendItem.m in Sources */,
 				18DCA3161F1F4187008BF67E /* DCFiltrateAttrCell.m in Sources */,
+				22FEC2671F5A6C8600CC6F18 /* ProductCell.m in Sources */,
 				18DCA33E1F1F4187008BF67E /* DCPartCommentHeadView.m in Sources */,
 				FEB124061F4D78D3002DAA55 /* LZCartViewController.m in Sources */,
 				18DCA3091F1F4187008BF67E /* AppDelegate.m in Sources */,
@@ -2182,6 +2219,7 @@
 				18DCA33F1F1F4187008BF67E /* DCShareItemCell.m in Sources */,
 				18DCA3771F1F4187008BF67E /* XWCoolAnimator+XWFold.m in Sources */,
 				18DCA3931F1F4187008BF67E /* DCOverFootView.m in Sources */,
+				22FEC2621F5A697A00CC6F18 /* AddressCell.m in Sources */,
 				18DCA3461F1F4187008BF67E /* UIView+DCExtension.m in Sources */,
 				18DCA3311F1F4187008BF67E /* DCDetailServicetCell.m in Sources */,
 				18DCA3411F1F4187008BF67E /* DCCollectionHeaderLayout.m in Sources */,
@@ -2196,6 +2234,7 @@
 				18DCA38D1F1F4187008BF67E /* DCExceedApplianceCell.m in Sources */,
 				18DCA3321F1F4187008BF67E /* DCDetailGoodReferralCell.m in Sources */,
 				18DCA33B1F1F4187008BF67E /* DCCommentHeaderCell.m in Sources */,
+				224B78CF1F5A4FD200BCC2F5 /* OrderDetailViewController.m in Sources */,
 				18DCA3431F1F4187008BF67E /* UIBarButtonItem+DCBarButtonItem.m in Sources */,
 				18DCA3301F1F4187008BF67E /* DCDetailLikeItemCell.m in Sources */,
 				18DCA39C1F1F4187008BF67E /* DCZuoWenRightButton.m in Sources */,
@@ -2314,6 +2353,7 @@
 				18DCA31D1F1F4187008BF67E /* DCFootprintCell.m in Sources */,
 				18DCA3201F1F4187008BF67E /* DCGoodBaseViewController.m in Sources */,
 				FEB124091F4D793C002DAA55 /* LZCartTableViewCell.m in Sources */,
+				22FEC26C1F5A6F9700CC6F18 /* PayCell.m in Sources */,
 				18DCA3561F1F4187008BF67E /* PPNumberButton.m in Sources */,
 				18DCA30E1F1F4187008BF67E /* DCCalssSubItem.m in Sources */,
 				FE32B6241F356DF900A3061C /* AgreeViewController.m in Sources */,

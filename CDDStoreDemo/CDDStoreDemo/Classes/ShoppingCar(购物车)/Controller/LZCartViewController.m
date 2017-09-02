@@ -7,7 +7,7 @@
 #import "LZCartViewController.h"
 #import "LZCartTableViewCell.h"
 #import "DCRecommendItem.h"
-
+#import "OrderDetailViewController.h"
 
 @interface LZCartViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -247,6 +247,9 @@
 //    } else {
 //        NSLog(@"你还没有选择任何商品");
 //    }
+    
+    OrderDetailViewController *vc = [OrderDetailViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
