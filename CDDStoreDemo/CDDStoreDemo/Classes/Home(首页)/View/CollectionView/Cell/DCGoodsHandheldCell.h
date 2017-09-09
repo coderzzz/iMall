@@ -11,6 +11,6 @@
 
 @interface DCGoodsHandheldCell : UICollectionViewCell
 
-
+@property (strong , nonatomic)DCGoodItem *goodItem;
 
 @end

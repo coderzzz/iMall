@@ -10,4 +10,6 @@
 
 @interface DCSlideshowHeadView : UICollectionReusableView
 
+@property (nonatomic, copy)NSArray *suffl;
+
 @end

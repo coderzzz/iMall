@@ -11,7 +11,7 @@
 // Controllers
 
 // Models
-
+#import "DCShuffingItem.h"
 // Views
 
 // Vendors
@@ -47,7 +47,7 @@
     _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, ScreenW, self.dc_height) delegate:self placeholderImage:nil];
     _cycleScrollView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
     _cycleScrollView.autoScrollTimeInterval = 5.0;
-    _cycleScrollView.imageURLStringsGroup = @[@"slideshow01",@"slideshow02",@"slideshow03"];
+    
     
     [self addSubview:_cycleScrollView];
 }
@@ -65,5 +65,15 @@
 
 #pragma mark - Setter Getter Methods
 
+- (void)setSuffl:(NSArray *)suffl{
+    
+    _suffl = suffl;
+    NSMutableArray *list = [NSMutableArray array];
+    for (DCShuffingItem *item in suffl) {
+        
+        [list addObject:item.shuffling];
+    }
+    _cycleScrollView.imageURLStringsGroup = list;
+}
 
 @end

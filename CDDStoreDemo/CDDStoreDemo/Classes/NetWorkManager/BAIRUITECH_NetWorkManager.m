@@ -513,6 +513,18 @@
     [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:@"/mall/weixinLogin" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 //注册
 +(void)FinanceLiveShow_registParam:(id)param withSuccessBlock:(requestSuccess)successBlock withFailureBlock:(requestFailure)failureBlock{
 
@@ -911,7 +923,7 @@
 //获取首页数据
 +(void)FinanceLiveShow_LZLGetHomePage:(id)param withSuccessBlock:(requestSuccess)successBlock withFailureBlock:(requestFailure)failureBlock{
 
-    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypePost withUrlString:@"/v1/index/getHomePage" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
+    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:@"/mall/index" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
 }
 
 //获取直播、预告分类

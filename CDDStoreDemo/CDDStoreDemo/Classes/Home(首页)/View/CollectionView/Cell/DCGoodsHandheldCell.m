@@ -49,7 +49,8 @@
 - (void)setUpUI
 {
     _handheldImageView = [[UIImageView alloc] init];
-    _handheldImageView.contentMode = UIViewContentModeScaleToFill;
+    _handheldImageView.layer.masksToBounds = YES;
+    _handheldImageView.contentMode = UIViewContentModeScaleAspectFill;
     [_handheldImageView sd_setImageWithURL:[NSURL URLWithString:@"http://gfs8.gomein.net.cn/T1TkDvBK_j1RCvBVdK.jpg"]];
 
     [self addSubview:_handheldImageView];
@@ -100,11 +101,13 @@
 }
 
 #pragma mark - Setter Getter Methods
-//- (void)setHandheldImage:(NSString *)handheldImage
-//{
-//    _handheldImage = handheldImage;
-//    
-//    [_handheldImageView sd_setImageWithURL:[NSURL URLWithString:handheldImage]];
-//}
+- (void)setGoodItem:(DCGoodItem *)goodItem
+{
+    _goodItem = goodItem;
+    
+    [_handheldImageView sd_setImageWithURL:[NSURL URLWithString:goodItem.main_imgs]];
+    _titleLabel.text = goodItem.title;
+    _subTitleLabel.text = goodItem.detail;
+}
 
 @end

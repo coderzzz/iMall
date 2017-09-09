@@ -8,7 +8,7 @@
 
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
-
+#import "MJRefresh.h"
 #import "Headers.h"
 #import "BAIRUITECH_NetWorkManager.h"
 #import "BlocksKit.h"
@@ -19,4 +19,5 @@
 #import "UIViewController+DCHud.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import "MJExtension.h"
+#import "DCGoodItem.h"
 #endif /* PrefixHeader_pch */

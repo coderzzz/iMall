@@ -209,6 +209,8 @@
 		22318EDB1F637BE90082E06E /* UIViewController+DCHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 22318EDA1F637BE90082E06E /* UIViewController+DCHud.m */; };
 		22318EDF1F6390210082E06E /* BindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22318EDD1F6390210082E06E /* BindViewController.m */; };
 		22318EE01F6390210082E06E /* BindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22318EDE1F6390210082E06E /* BindViewController.xib */; };
+		22318EE31F63E7AF0082E06E /* DCShuffingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22318EE21F63E7AF0082E06E /* DCShuffingItem.m */; };
+		22318EE61F63EA630082E06E /* DCGoodItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22318EE51F63EA630082E06E /* DCGoodItem.m */; };
 		224B78C81F4C63E100BCC2F5 /* DC_TypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 224B78C71F4C63E100BCC2F5 /* DC_TypeView.m */; };
 		224B78CB1F4C778D00BCC2F5 /* DCDetailLikeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 224B78CA1F4C778D00BCC2F5 /* DCDetailLikeHeadView.m */; };
 		224B78CF1F5A4FD200BCC2F5 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224B78CD1F5A4FD200BCC2F5 /* OrderDetailViewController.m */; };
@@ -622,6 +624,10 @@
 		22318EDC1F6390210082E06E /* BindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindViewController.h; sourceTree = "<group>"; };
 		22318EDD1F6390210082E06E /* BindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindViewController.m; sourceTree = "<group>"; };
 		22318EDE1F6390210082E06E /* BindViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BindViewController.xib; sourceTree = "<group>"; };
+		22318EE11F63E7AF0082E06E /* DCShuffingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCShuffingItem.h; sourceTree = "<group>"; };
+		22318EE21F63E7AF0082E06E /* DCShuffingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCShuffingItem.m; sourceTree = "<group>"; };
+		22318EE41F63EA630082E06E /* DCGoodItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCGoodItem.h; sourceTree = "<group>"; };
+		22318EE51F63EA630082E06E /* DCGoodItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCGoodItem.m; sourceTree = "<group>"; };
 		224B78C61F4C63E100BCC2F5 /* DC_TypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DC_TypeView.h; sourceTree = "<group>"; };
 		224B78C71F4C63E100BCC2F5 /* DC_TypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DC_TypeView.m; sourceTree = "<group>"; };
 		224B78C91F4C778D00BCC2F5 /* DCDetailLikeHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCDetailLikeHeadView.h; sourceTree = "<group>"; };
@@ -1585,6 +1591,10 @@
 			children = (
 				18DCA2871F1F4186008BF67E /* DCGridItem.h */,
 				18DCA2881F1F4186008BF67E /* DCGridItem.m */,
+				22318EE11F63E7AF0082E06E /* DCShuffingItem.h */,
+				22318EE21F63E7AF0082E06E /* DCShuffingItem.m */,
+				22318EE41F63EA630082E06E /* DCGoodItem.h */,
+				22318EE51F63EA630082E06E /* DCGoodItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2183,6 +2193,7 @@
 				18DCA3161F1F4187008BF67E /* DCFiltrateAttrCell.m in Sources */,
 				22FEC2671F5A6C8600CC6F18 /* ProductCell.m in Sources */,
 				18DCA33E1F1F4187008BF67E /* DCPartCommentHeadView.m in Sources */,
+				22318EE31F63E7AF0082E06E /* DCShuffingItem.m in Sources */,
 				FEB124061F4D78D3002DAA55 /* LZCartViewController.m in Sources */,
 				18DCA3091F1F4187008BF67E /* AppDelegate.m in Sources */,
 				18DCA3851F1F4187008BF67E /* XWFilterAnimator+XWPageCurl.m in Sources */,
@@ -2286,6 +2297,7 @@
 				18DCA3A41F1F4187008BF67E /* DCMessageViewController.m in Sources */,
 				18DCA32D1F1F4187008BF67E /* DCDetailShufflingHeadView.m in Sources */,
 				18DCA3491F1F4187008BF67E /* DCLIRLButton.m in Sources */,
+				22318EE61F63EA630082E06E /* DCGoodItem.m in Sources */,
 				18DCA3AF1F1F4187008BF67E /* DCFlowAttributeCell.m in Sources */,
 				18DCA32B1F1F4187008BF67E /* DCDetailOverFooterView.m in Sources */,
 				18DCA31E1F1F4187008BF67E /* DCFeatureSelectionViewController.m in Sources */,

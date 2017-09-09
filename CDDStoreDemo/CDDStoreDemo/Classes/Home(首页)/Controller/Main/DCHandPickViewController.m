@@ -15,6 +15,7 @@
 // Models
 #import "DCGridItem.h"
 #import "DCRecommendItem.h"
+#import "DCShuffingItem.h"
 // Views
 #import "DCNavSearchBarView.h"
 
@@ -42,15 +43,17 @@
 
 @interface DCHandPickViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-/* collectionView */
 @property (strong , nonatomic)UICollectionView *collectionView;
-/* 10个属性 */
-@property (strong , nonatomic)NSMutableArray<DCGridItem *> *gridItem;
-/* 推荐商品属性 */
-@property (strong , nonatomic)NSMutableArray<DCRecommendItem *> *youLikeItem;
 
-/* 滚回顶部按钮 */
+@property (strong , nonatomic)NSMutableArray<DCGridItem *> *gridItem;
+
+@property (strong , nonatomic)NSMutableArray<DCShuffingItem *> *shuffItem;
+
+@property (strong , nonatomic)NSMutableArray<DCGoodItem *> *goodItem;
+
 @property (strong , nonatomic)UIButton *backTopButton;
+
+@property (assign , nonatomic) int pageIndex;
 
 @end
 /* cell */
@@ -114,7 +117,16 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
     
 //    [self setUpNav];
     
-    [self setUpGoodsData];
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+       
+        [self setUpGoodsData];
+    }];
+    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        [self loadMore];
+    }];
+    
+    [self firstLoad];
     
 //    [self setUpScrollToTopView];
 }
@@ -128,10 +140,60 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
 }
 
 #pragma mark - 加载数据
+
+- (void)firstLoad{
+    
+    self.pageIndex = 1;
+    _goodItem = [NSMutableArray array];
+    
+    [self setUpGoodsData];
+}
+
+- (void)loadMore{
+    
+    self.pageIndex += 1;
+    [self setUpGoodsData];
+    
+}
+
+
 - (void)setUpGoodsData
 {
-    _gridItem = [DCGridItem mj_objectArrayWithFilename:@"GoodsGrid.plist"];
-    _youLikeItem = [DCRecommendItem mj_objectArrayWithFilename:@"HomeHighGoods.plist"];
+    
+    
+    [BAIRUITECH_NetWorkManager FinanceLiveShow_LZLGetHomePage:@{@"pageNumber":@(self.pageIndex)} withSuccessBlock:^(NSDictionary *object) {
+        
+        
+        [self.collectionView.mj_header endRefreshing];
+        [self.collectionView.mj_footer endRefreshing];
+        
+        if([object[@"error"]intValue] == 0){
+            
+            
+            _gridItem = [DCGridItem mj_objectArrayWithKeyValuesArray:object[@"categorys"]];
+            _shuffItem = [DCShuffingItem mj_objectArrayWithKeyValuesArray:object[@"good_is_suffling"]];
+            [_goodItem addObjectsFromArray:[DCGoodItem mj_objectArrayWithKeyValuesArray:object[@"good_page"][@"list"]]];
+            
+            
+            [self.collectionView reloadData];
+            
+        }else{
+            
+            
+        }
+        
+        
+    } withFailureBlock:^(NSError *error) {
+        
+        
+        [self.collectionView.mj_header endRefreshing];
+        [self.collectionView.mj_footer endRefreshing];
+        
+        //        YJLog(@"error %@",error);
+        
+        
+    }];
+    
 }
 
 #pragma mark - 滚回顶部
@@ -175,7 +237,7 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
     }
     if (section == 1) { //商品列表
         
-        return 4;
+        return _goodItem.count;
     }
 //    if (section == 2) { //掌上专享
 //        return 1;
@@ -200,9 +262,7 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
     }
     else {//商品列表
         DCGoodsHandheldCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCGoodsHandheldCellID forIndexPath:indexPath];
-
-        
-    //        cell.goodExceedArray = GoodsRecommendArray;
+        cell.goodItem = _goodItem[indexPath.row];
         gridcell = cell;
     }
 //    else if (indexPath.section == 2) {//掌上专享
@@ -236,6 +296,7 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
     if (kind == UICollectionElementKindSectionHeader){
         if (indexPath.section == 0) {
             DCSlideshowHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCSlideshowHeadViewID forIndexPath:indexPath];
+            headerView.suffl = _shuffItem;
             reusableview = headerView;
         }else{
             DCCountDownHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCCountDownHeadViewID forIndexPath:indexPath];

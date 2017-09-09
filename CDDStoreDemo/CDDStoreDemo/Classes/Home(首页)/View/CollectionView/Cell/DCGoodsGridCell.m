@@ -80,8 +80,8 @@
 {
     _gridItem = gridItem;
     
-    [_gridImageView sd_setImageWithURL:[NSURL URLWithString:gridItem.iconImage]];
-    _gridLabel.text = gridItem.gridTitle;
+    [_gridImageView sd_setImageWithURL:[NSURL URLWithString:gridItem.icon]];
+    _gridLabel.text = gridItem.name;
 }
 
 @end
