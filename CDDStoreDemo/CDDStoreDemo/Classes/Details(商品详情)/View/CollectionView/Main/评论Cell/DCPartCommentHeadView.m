@@ -79,7 +79,7 @@
     
     _nickNameLabel = [[UILabel alloc] init];
     _nickNameLabel.font = PFR11Font;
-    _nickNameLabel.text = [DCSpeedy dc_EncryptionDisplayMessageWith:userInfo.nickname WithFirstIndex:2];
+//    _nickNameLabel.text = [DCSpeedy dc_EncryptionDisplayMessageWith:userInfo.nickname WithFirstIndex:2];
     [_commentTextView addSubview:_nickNameLabel];
     
     _contentLabel = [[UILabel alloc] init];

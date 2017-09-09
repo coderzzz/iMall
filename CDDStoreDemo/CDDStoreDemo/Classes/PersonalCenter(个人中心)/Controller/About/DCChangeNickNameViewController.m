@@ -90,7 +90,7 @@
 {
     if (_nickField.text.length != 0) { //更改
         DCUserInfo *userInfo = UserInfoData;
-        userInfo.nickname = _nickField.text;
+//        userInfo.nickname = _nickField.text;
         
         [userInfo save];
     }

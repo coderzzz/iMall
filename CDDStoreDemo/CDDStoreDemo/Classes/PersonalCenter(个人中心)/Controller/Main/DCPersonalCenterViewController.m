@@ -188,7 +188,7 @@ static NSString *const DCYouLikeHeadViewID = @"DCYouLikeHeadView";
             __weak typeof(self)weakSelf = self;
             DCUserInfo *userInfo = UserInfoData;
             UIImage *image = ([userInfo.userimage isEqualToString:@"icon"]) ? [UIImage imageNamed:@"icon"] : [DCSpeedy Base64StrToUIImage:userInfo.userimage];
-            headerView.nickNameLabel.text = userInfo.nickname;
+//            headerView.nickNameLabel.text = userInfo.nickname;
             [headerView.headImageButton setImage:image forState:UIControlStateNormal];
             
             headerView.goodsCollectionClickBlock = ^{

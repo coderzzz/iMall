@@ -171,7 +171,7 @@
     NSString *birthDayStr = [formatter stringFromDate:choosedDate];
     
     if (![birthDayStr isEqualToString:_birthField.text]) { //跟换日期
-        userInfo.birthDay = birthDayStr;
+//        userInfo.birthDay = birthDayStr;
         [userInfo save];
         _birthField.text = birthDayStr;
     }

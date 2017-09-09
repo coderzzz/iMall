@@ -1,0 +1,669 @@
+//
+//  BRRegistViewController.m
+//  HaoLive
+//
+//  Created by Mac on 16/5/24.
+//  Copyright © 2016年 bairuitech. All rights reserved.
+//
+
+#import "BRRegistViewController.h"
+//#import "BRValidAccount.h"
+//#import "HTMD5.h"
+#import "AppDelegate.h"
+#import "BRLoginViewController.h"
+
+#define validCodeTime 60
+#define GLOBAL_SUBJECT_COLOR @"ff9601"
+@interface BRRegistViewController ()<UITextFieldDelegate,UIAlertViewDelegate>
+
+{
+    UIImageView *bkImgView;            //背景图片
+    
+    UIButton *exitBtn;                 //退出按钮
+    UIImageView *iconImgView;          //icon图标
+    
+    UIImageView *phoneImgView;         //手机号码图片
+    UITextField *phoneTextField;       //手机号码输入框
+    UIView *line1View;                 //手机号码分隔线1
+    
+    UIImageView *testCodeImgView;      //验证码图片
+    UITextField *testCodeTextField;    //验证码输入框
+    UIButton *getTestCodeBtn;          //获取验证码按钮
+    UIView *line2View;                 //验证码分隔线2
+    
+    UIImageView *pwdImgView;           //密码图片
+    UITextField *passwordTextField;    //密码输入框
+    UIButton *eyeBtn;                  //密码可见或不可见
+    UIView *line3View;                 //密码分隔线3
+    
+    UIButton *registBtn;               //确定注册按钮
+    
+    UIButton *checkBtn;                //勾选按钮
+    UIButton *protocolBtn;             //协议按钮
+    
+
+    
+}
+
+@property (nonatomic, strong) NSTimer *timer;
+
+
+//@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *testCodeTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+//
+//@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+//@property (weak, nonatomic) IBOutlet UIButton *testCodeButton;
+//@property (weak, nonatomic) IBOutlet UIButton *registButton;
+
+@end
+
+@implementation BRRegistViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    self.title = @"新用户注册";
+    
+    [self setUI];
+    
+    registBtn.enabled = NO;
+    passwordTextField.secureTextEntry = YES;
+    [phoneTextField addTarget:self action:@selector(change) forControlEvents:UIControlEventEditingChanged];
+    [passwordTextField addTarget:self action:@selector(change) forControlEvents:UIControlEventEditingChanged];
+    [testCodeTextField addTarget:self action:@selector(change) forControlEvents:UIControlEventEditingChanged];
+//    [nameTextField addTarget:self action:@selector(change) forControlEvents:UIControlEventEditingChanged];
+}
+
+-(void)setUI{
+    
+        @weakify(self);
+    //背景图片
+    bkImgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"BG"]];
+    
+    bkImgView.frame = CGRectMake(0, 0,SCREEN_WIDTH , SCREEN_HEIGHT);
+    [self.view addSubview:bkImgView];
+    
+    //退出按钮
+    exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [exitBtn setImage:[UIImage imageNamed:@"关闭"] forState:UIControlStateNormal];
+    
+    [exitBtn bk_whenTapped:^{
+        
+        @strongify(self);
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    [self.view addSubview:exitBtn];
+    
+    [exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+        @strongify(self);
+        make.top.equalTo(self.view.mas_top).offset(40);
+        make.right.equalTo(self.view.mas_right).offset(-10);
+        make.width.equalTo(@50);
+        make.height.equalTo(@15);
+    }];
+    
+    //icon图标
+    iconImgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"LOGO-0"]];
+    
+    [self.view addSubview:iconImgView];
+    
+    if(IS_IPHONE_5){
+    
+        [iconImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            @strongify(self);
+            
+            make.centerX.mas_equalTo(self.view.mas_centerX);
+            make.top.equalTo(self.view.mas_top).offset(64);
+            make.width.mas_equalTo(@90);
+            make.height.mas_equalTo(@90);
+        }];
+    }else{
+    
+        [iconImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            @strongify(self);
+            
+            make.centerX.mas_equalTo(self.view.mas_centerX);
+            make.top.equalTo(self.view.mas_top).offset(40+64);
+            make.width.mas_equalTo(@90);
+            make.height.mas_equalTo(@90);
+        }];
+    }
+    
+    
+    //手机号图片
+    phoneImgView = [[UIImageView alloc]init];
+    phoneImgView.image = [UIImage imageNamed:@"账号-ICO"];
+    [self.view addSubview:phoneImgView];
+    
+    if(IS_IPHONE_5){
+    
+        [phoneImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            @strongify(self);
+            
+            make.left.equalTo(self.view.mas_left).offset(40);
+            make.top.equalTo(iconImgView.mas_bottom).offset(30);
+            make.width.equalTo(@15);
+            make.height.equalTo(@17);
+            
+        }];
+    }else{
+    
+        [phoneImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            @strongify(self);
+            
+            make.left.equalTo(self.view.mas_left).offset(40);
+            make.top.equalTo(iconImgView.mas_bottom).offset(40);
+            make.width.equalTo(@15);
+            make.height.equalTo(@17);
+            
+        }];
+    }
+    
+    //手机号码
+    phoneTextField = [[UITextField alloc]init];
+    phoneTextField.textColor = [UIColor whiteColor];
+    phoneTextField.placeholder = @"请输入手机号";
+    [phoneTextField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    
+    phoneTextField.keyboardType = UIKeyboardTypeNumberPad;
+    phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    phoneTextField.delegate = self;
+    phoneTextField.font = [UIFont systemFontOfSize:15];
+    [phoneTextField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [phoneTextField setValue:[UIFont systemFontOfSize:15]   forKeyPath:@"_placeholderLabel.font"];
+    [phoneTextField addTarget:self action:@selector(change) forControlEvents:UIControlEventEditingChanged];
+    
+    [self.view addSubview:phoneTextField];
+    
+    if(IS_IPHONE_5){
+    
+        [phoneTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            @strongify(self);
+            
+            make.left.equalTo(phoneImgView.mas_right).offset(20);
+            //make.top.equalTo(iconImgView.mas_bottom).offset(30);
+            make.bottom.equalTo(phoneImgView);
+            make.right.equalTo(self.view.mas_right).offset(-40);
+            make.height.equalTo(@15);
+        }];
+    }else{
+    
+        [phoneTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            @strongify(self);
+            
+            make.left.equalTo(phoneImgView.mas_right).offset(20);
+            make.top.equalTo(iconImgView.mas_bottom).offset(40);
+            make.right.equalTo(self.view.mas_right).offset(-40);
+            make.height.equalTo(@15);
+        }];
+        
+    }
+    
+    
+    
+    //分隔线1
+    line1View = [[UIView alloc]init];
+    line1View.backgroundColor = [UIColor grayColor];
+    
+    [self.view addSubview:line1View];
+    
+    [line1View mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        @strongify(self);
+        
+        make.left.equalTo(self.view.mas_left).offset(20);
+        make.top.equalTo(phoneTextField.mas_bottom).offset(15);
+        make.right.equalTo(self.view.mas_right).offset(-20);
+        make.height.equalTo(@1);
+        
+    }];
+    
+    //验证码
+    testCodeImgView = [[UIImageView alloc]init];
+    testCodeImgView.image = [UIImage imageNamed:@"验证码-ICO"];
+    
+    [self.view addSubview:testCodeImgView];
+    
+    [testCodeImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        @strongify(self);
+        
+        make.left.equalTo(self.view.mas_left).offset(40);
+        make.top.equalTo(line1View.mas_bottom).offset(20);
+        make.width.equalTo(@15);
+        make.height.equalTo(@15);
+    }];
+    
+    //获取验证码
+    getTestCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [getTestCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+    getTestCodeBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    getTestCodeBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [getTestCodeBtn setTitleColor:[BAIRUITECH_Utils colorWithHexString:@"ffcb2c"] forState:UIControlStateNormal];
+    [self.view addSubview:getTestCodeBtn];
+    
+    [getTestCodeBtn bk_whenTapped:^{
+        
+        if (![BAIRUITECH_Utils isRightPhoneNum:phoneTextField.text  withCountry:@"+86"]) {
+            return ;
+        }else{
+            
+            
+            NSDictionary *param = @{@"phone":phoneTextField.text};
+            
+            [BAIRUITECH_NetWorkManager FinanceLiveShow_SMSCodeParam:param withSuccessBlock:^(NSDictionary *object) {
+                
+                YJLog(@"验证码%@",object);
+                
+                if([object[@"errorCode"]intValue] == 0){
+                    
+                    
+                      [BAIRUITECH_BRTipView showTipTitle:object[@"data"][@"verifyCode"] delay:4];
+                    
+//                    [BAIRUITECH_BRTipView showTipTitle:@"验证码发送成功，请注意查收" delay:1];
+                    
+                    _timer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startCntTime) userInfo:nil repeats:YES];
+                    [_timer fire];
+                    
+//                    testCodeTextField.text = [NSString stringWithFormat:@"%@",object[@"data"][@"mobileCode"]];
+                    
+                }else{
+                    
+                    [BAIRUITECH_BRTipView showTipTitle:object[@"msg"] delay:1];
+                }
+                
+                
+            } withFailureBlock:^(NSError *error) {
+                
+                
+                YJLog(@"error %@",error);
+                
+                
+            }];
+            
+        }
+        
+    }];
+
+    [getTestCodeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        @strongify(self);
+        make.top.equalTo(line1View.mas_bottom).offset(20);
+        make.right.equalTo(self.view.mas_right).offset(-20);
+        make.height.equalTo(@15);
+        
+    }];
+    
+    //验证码输入框
+    testCodeTextField = [[UITextField alloc]init];
+    testCodeTextField.textColor = [UIColor whiteColor];
+    testCodeTextField.placeholder = @"请输入验证码";
+    testCodeTextField.font = [UIFont systemFontOfSize:15];
+    [testCodeTextField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [testCodeTextField setValue:[UIFont systemFontOfSize:15]   forKeyPath:@"_placeholderLabel.font"];
+    testCodeTextField.keyboardType = UIKeyboardTypeNumberPad;
+    testCodeTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    testCodeTextField.delegate = self;
+    
+    [self.view addSubview:testCodeTextField];
+    
+    [testCodeTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        //@strongify(self);
+        
+        make.left.equalTo(testCodeImgView.mas_right).offset(20);
+        //make.top.equalTo(line1View.mas_bottom).offset(20);
+        make.bottom.equalTo(testCodeImgView);
+        make.right.equalTo(getTestCodeBtn.mas_left).offset(-20);
+        make.height.equalTo(@15);
+        
+    }];
+    
+    //分隔线2
+    line2View = [[UIView alloc]init];
+    line2View.backgroundColor = [UIColor grayColor];
+    
+    [self.view addSubview:line2View];
+    
+    [line2View mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        @strongify(self);
+        
+        make.left.equalTo(self.view.mas_left).offset(20);
+        make.top.equalTo(testCodeTextField.mas_bottom).offset(15);
+        make.right.equalTo(self.view.mas_right).offset(-20);
+        make.height.equalTo(@1);
+        
+    }];
+    
+    //密码图片
+    pwdImgView = [[UIImageView alloc]init];
+    pwdImgView.image = [UIImage imageNamed:@"密码ICO"];
+    
+    [self.view addSubview:pwdImgView];
+    
+    [pwdImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        @strongify(self);
+        
+        make.left.equalTo(self.view.mas_left).offset(40);
+        make.top.equalTo(line2View.mas_bottom).offset(20);
+        make.width.equalTo(@15);
+        make.height.equalTo(@17);
+        
+    }];
+    
+    //密码输入框
+    passwordTextField = [[UITextField alloc]init];
+    passwordTextField.textColor = [UIColor whiteColor];
+    passwordTextField.placeholder = @"请输入6~12位密码";
+    passwordTextField.font = [UIFont systemFontOfSize:15];
+    [passwordTextField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [passwordTextField setValue:[UIFont systemFontOfSize:15]   forKeyPath:@"_placeholderLabel.font"];
+    passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    passwordTextField.secureTextEntry = YES;
+    passwordTextField.delegate = self;
+    [passwordTextField addTarget:self action:@selector(change) forControlEvents:UIControlEventEditingChanged];
+    [self.view addSubview:passwordTextField];
+    
+    [passwordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        @strongify(self);
+        
+        make.left.equalTo(phoneImgView.mas_right).offset(20);
+        //make.top.equalTo(line2View.mas_bottom).offset(25);
+        make.bottom.equalTo(pwdImgView);
+        make.right.equalTo(self.view.mas_right).offset(-70);
+        make.height.equalTo(@15);
+    }];
+    
+    //密码可见或不可见
+    eyeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [eyeBtn setImage:[UIImage imageNamed:@"闭眼ICO"] forState:UIControlStateNormal];
+    
+    [eyeBtn bk_whenTapped:^{
+        eyeBtn.selected = !eyeBtn.selected;
+        if(!eyeBtn.selected){
+            
+            [eyeBtn setImage:[UIImage imageNamed:@"眼睛-ICO"] forState:UIControlStateNormal];
+            passwordTextField.secureTextEntry = NO;
+        }else{
+            
+            [eyeBtn setImage:[UIImage imageNamed:@"闭眼ICO"] forState:UIControlStateNormal];
+            passwordTextField.secureTextEntry = YES;
+        }
+    }];
+    [self.view addSubview:eyeBtn];
+    
+    [eyeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        @strongify(self);
+        
+        //make.top.equalTo(line2View.mas_bottom).offset(20);
+        make.bottom.equalTo(pwdImgView.mas_bottom).offset(5);
+        make.right.equalTo(self.view.mas_right).offset(-40);
+        make.width.equalTo(@25);
+        make.height.equalTo(@25);
+    }];
+
+    
+    //密码分隔线
+    line3View = [[UIView alloc]init];
+    line3View.backgroundColor = [UIColor grayColor];
+    
+    [self.view addSubview:line3View];
+    
+    [line3View mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
+        make.left.equalTo(self.view.mas_left).offset(20);
+        make.top.equalTo(passwordTextField.mas_bottom).offset(15);
+        make.right.equalTo(self.view.mas_right).offset(-20);
+        make.height.equalTo(@1);
+        
+    }];
+    
+    //确定注册按钮
+    registBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [registBtn setBackgroundImage:[UIImage imageNamed:@"立即登录初始按钮"] forState:UIControlStateNormal];
+    [registBtn setTitleColor:[BAIRUITECH_Utils colorWithHexString:@"c5c5c5"] forState:UIControlStateNormal];
+    [registBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [self.view addSubview:registBtn];
+    
+    if(IS_IPHONE_5){
+    
+        [registBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            @strongify(self);
+            make.left.equalTo(self.view.mas_left).offset(20);
+            make.top.equalTo(line3View.mas_bottom).offset(30);
+            make.right.equalTo(self.view.mas_right).offset(-20);
+            make.height.equalTo(@40);
+            
+        }];
+    }else{
+    
+        [registBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            @strongify(self);
+            make.left.equalTo(self.view.mas_left).offset(20);
+            make.top.equalTo(line3View.mas_bottom).offset(40);
+            make.right.equalTo(self.view.mas_right).offset(-20);
+            make.height.equalTo(@50);
+            
+        }];
+    }
+    
+    
+    
+    [registBtn addTarget:self action:@selector(regist:) forControlEvents:UIControlEventTouchUpInside];
+//    [registBtn bk_addClickHandler:^(id sender) {
+//        YJLog(@"注册成功");
+//        UIApplication *app = [UIApplication sharedApplication];
+//        AppDelegate* delegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
+//        [delegate showTabViewController];
+//        // 执行动画
+//        CATransition *anim = [CATransition animation];
+//        anim.duration = 0.4;
+//        anim.type = kCATransitionPush;
+//        anim.subtype = kCATransitionFromRight;
+//        [app.keyWindow.layer addAnimation:anim forKey:nil];
+//        
+//    }];
+    //勾选按钮
+    checkBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    //checkBtn.backgroundColor = [UIColor redColor];
+    [checkBtn setImage:[UIImage imageNamed:@"正确"] forState:UIControlStateNormal];
+    [self.view addSubview:checkBtn];
+    
+    [checkBtn bk_whenTapped:^{
+        checkBtn.selected = !checkBtn.selected;
+        if(checkBtn.selected){
+        [checkBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+            
+        }else{
+        
+           [checkBtn setImage:[UIImage imageNamed:@"正确"] forState:UIControlStateNormal];
+        }
+    }];
+    
+    [checkBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        @strongify(self);
+        make.left.equalTo(self.view.mas_left).offset(20);
+        make.top.equalTo(registBtn.mas_bottom).offset(20);
+        make.width.equalTo(@20);
+        make.height.equalTo(@20);
+    }];
+    
+    //用户协议按钮
+    protocolBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [protocolBtn setTitle:@"阅读用户协议" forState:UIControlStateNormal];
+    protocolBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [protocolBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    protocolBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    [self.view addSubview:protocolBtn];
+    
+    [protocolBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        //@strongify(self);
+        make.left.equalTo(checkBtn.mas_right).offset(10);
+        //make.top.equalTo(registBtn.mas_bottom).offset(20);
+        make.bottom.equalTo(checkBtn);
+        make.height.equalTo(@15);
+    }];
+    
+
+}
+
+-(void)dealloc{
+
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+    YJLog(@"BRRegistViewController被销毁");
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+    
+}
+
+
+
+
+#pragma mark - UITextViewDelegate
+
+
+#pragma mark - incident
+- (void)change{
+    if (phoneTextField.text.length == 11 && passwordTextField.text.length && testCodeTextField.text.length) {
+        [registBtn setBackgroundImage:[UIImage imageNamed:@"立即登录按钮"] forState:UIControlStateNormal];
+        [registBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        registBtn.enabled = YES;
+    }else
+    {
+        [registBtn setBackgroundImage:[UIImage imageNamed:@"立即登录初始按钮"] forState:UIControlStateNormal];
+        [registBtn setTitleColor:[BAIRUITECH_Utils colorWithHexString:@"c5c5c5"] forState:UIControlStateNormal];
+        registBtn.enabled = NO;
+    }
+    
+}
+
+- (void)startCntTime{
+    static int time=0;
+    time++;
+    getTestCodeBtn.userInteractionEnabled=NO;
+    getTestCodeBtn.alpha = 0.6;
+    [getTestCodeBtn setTitleColor:[BAIRUITECH_Utils colorWithHexString:@"cccccc"] forState:0];
+    getTestCodeBtn.titleLabel.text = [NSString stringWithFormat:@"(%d)重新获取",validCodeTime-time];
+    [getTestCodeBtn setTitle:[NSString stringWithFormat:@"(%d)重新获取",validCodeTime-time] forState:UIControlStateNormal];
+    getTestCodeBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    if (time == validCodeTime) {
+        getTestCodeBtn.userInteractionEnabled=YES;
+        getTestCodeBtn.alpha=1;
+        [getTestCodeBtn setTitleColor:[BAIRUITECH_Utils colorWithHexString:GLOBAL_SUBJECT_COLOR] forState:0];
+        time=0;
+        [getTestCodeBtn setTitle:@"重新获取" forState:UIControlStateNormal];
+        
+        getTestCodeBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        [_timer invalidate];
+        _timer=nil;
+    }
+}
+
+#pragma mark -注册
+-(void)regist:(id)sender{
+
+    if(![BAIRUITECH_Utils checkBBPwd:passwordTextField.text]){
+    
+        [BAIRUITECH_BRTipView showTipTitle:@"密码不合法" delay:1];
+        return ;
+    }
+    
+    if(checkBtn.selected){
+    
+        [BAIRUITECH_BRTipView showTipTitle:@"请勾选阅读用户协议" delay:1];
+        return;
+    }
+    
+    NSDictionary *param = @{@"loginName":phoneTextField.text,@"loginPass":passwordTextField.text,@"verifyCode":testCodeTextField.text};
+    
+    NSLog(@"%@",param);
+   //
+    [BAIRUITECH_NetWorkManager FinanceLiveShow_registParam:param withSuccessBlock:^(NSDictionary *object) {
+        
+        
+        if([object[@"ret"] intValue] == 0){
+        
+//            NSNotificationCenter *notif = [NSNotificationCenter defaultCenter];
+//            
+//            [notif addObserver:self selector:@selector(info:) name:@"phoneAndPwd" object:nil];
+            
+            NSNotification *notice = [NSNotification notificationWithName:@"info" object:nil  userInfo:@{@"phoneTextField":phoneTextField.text,@"passwordTextField":passwordTextField.text}];
+            
+             [[NSNotificationCenter defaultCenter]postNotification:notice];
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        }else{
+        
+            [BAIRUITECH_BRTipView showTipTitle:object[@"message"] delay:1];
+        }
+        
+    } withFailureBlock:^(NSError *error) {
+        
+        YJLog(@"%@",error);
+        
+    }];
+    
+}
+
+#pragma mark - TextFieldDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField == passwordTextField) {
+        if (range.location < 12) {
+            return YES;
+        }else
+        {
+            return NO;
+        }
+    }else if (textField == phoneTextField)
+    {
+        if (range.location >= 11) {
+            return NO;
+        }else
+        {
+            return YES;
+        }
+    }else if (textField == testCodeTextField){
+        if (range.location>=6) {
+            return NO;
+        }else{
+            return YES;
+        }
+    }
+
+    return YES;
+}
+
+
+
+
+
+@end

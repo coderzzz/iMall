@@ -10,8 +10,13 @@
 #define PrefixHeader_pch
 
 #import "Headers.h"
-
-#import <ShareSDK/ShareSDK.h>
-#import <ShareSDKConnector/ShareSDKConnector.h>
-
+#import "BAIRUITECH_NetWorkManager.h"
+#import "BlocksKit.h"
+#import "BlocksKit+UIKit.h"
+#import "BlocksKit+MessageUI.h"
+#import "extobjc.h"
+#import "DCNavigationController.h"
+#import "UIViewController+DCHud.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import "MJExtension.h"
 #endif /* PrefixHeader_pch */

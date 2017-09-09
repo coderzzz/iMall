@@ -120,12 +120,12 @@ static NSString *const DCSettingCellID = @"DCSettingCell";
         }else if (indexPath.row == 4){
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.type = cellTypeThree;
-            cell.birthField.text = userInfo.birthDay;
+//            cell.birthField.text = userInfo.birthDay;
         }
         cell.titleLabel.text = titles[indexPath.row];
     
-        NSArray *contents = @[@"",userInfo.username,userInfo.nickname,userInfo.sex,@"",@"完善可以涨积分哦"];
-        cell.contentLabel.text = contents[indexPath.row];
+//        NSArray *contents = @[@"",userInfo.username,userInfo.nickname,userInfo.sex,@"",@"完善可以涨积分哦"];
+//        cell.contentLabel.text = contents[indexPath.row];
         
     }else if (indexPath.section == 1){
         cell.titleLabel.text = @"收货地址管理";
@@ -178,7 +178,7 @@ static NSString *const DCSettingCellID = @"DCSettingCell";
 - (void)changeNickNameWith:(DCUserInfo *)userInfo
 {
     DCChangeNickNameViewController *chageNickVc = [[DCChangeNickNameViewController alloc] init];
-    chageNickVc.oldNickName = userInfo.nickname;
+//    chageNickVc.oldNickName = userInfo.nickname;
     [self.navigationController pushViewController:chageNickVc animated:YES];
 }
 

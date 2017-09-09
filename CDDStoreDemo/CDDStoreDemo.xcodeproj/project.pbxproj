@@ -202,6 +202,13 @@
 		18DCA3C71F1F4187008BF67E /* DCRecommendItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCA3011F1F4187008BF67E /* DCRecommendItem.m */; };
 		18DD85C71F0650F400F47095 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18DD85C61F0650F400F47095 /* Assets.xcassets */; };
 		18F64B1B1F0E03F500DB978C /* PingFang Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18F64B1A1F0E03F500DB978C /* PingFang Medium.ttf */; };
+		22318ECD1F62D9ED0082E06E /* BRBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22318EC11F62D9ED0082E06E /* BRBaseViewController.m */; };
+		22318ED11F62D9ED0082E06E /* BRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22318EC81F62D9ED0082E06E /* BRLoginViewController.m */; };
+		22318ED21F62D9ED0082E06E /* BRLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22318EC91F62D9ED0082E06E /* BRLoginViewController.xib */; };
+		22318ED81F6375FE0082E06E /* BAIRUITECH_NetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22318ED71F6375FE0082E06E /* BAIRUITECH_NetWorkManager.m */; };
+		22318EDB1F637BE90082E06E /* UIViewController+DCHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 22318EDA1F637BE90082E06E /* UIViewController+DCHud.m */; };
+		22318EDF1F6390210082E06E /* BindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22318EDD1F6390210082E06E /* BindViewController.m */; };
+		22318EE01F6390210082E06E /* BindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22318EDE1F6390210082E06E /* BindViewController.xib */; };
 		224B78C81F4C63E100BCC2F5 /* DC_TypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 224B78C71F4C63E100BCC2F5 /* DC_TypeView.m */; };
 		224B78CB1F4C778D00BCC2F5 /* DCDetailLikeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 224B78CA1F4C778D00BCC2F5 /* DCDetailLikeHeadView.m */; };
 		224B78CF1F5A4FD200BCC2F5 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224B78CD1F5A4FD200BCC2F5 /* OrderDetailViewController.m */; };
@@ -214,17 +221,6 @@
 		22FEC26D1F5A6F9700CC6F18 /* PayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FEC26B1F5A6F9700CC6F18 /* PayCell.xib */; };
 		B4BD6CD985407C4066CE3D78 /* libPods-CDDStoreDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D28CF44E5CEBF6947E889711 /* libPods-CDDStoreDemo.a */; };
 		FE32B6021F356C1000A3061C /* MOBShareSDKHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B6011F356C1000A3061C /* MOBShareSDKHelper.m */; };
-		FE32B6241F356DF900A3061C /* AgreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B6061F356DF900A3061C /* AgreeViewController.m */; };
-		FE32B6251F356DF900A3061C /* AgreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE32B6071F356DF900A3061C /* AgreeViewController.xib */; };
-		FE32B6261F356DF900A3061C /* FixPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B6091F356DF900A3061C /* FixPassWordViewController.m */; };
-		FE32B6271F356DF900A3061C /* FixPassWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE32B60A1F356DF900A3061C /* FixPassWordViewController.xib */; };
-		FE32B6281F356DF900A3061C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B60C1F356DF900A3061C /* LoginViewController.m */; };
-		FE32B6291F356DF900A3061C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE32B60D1F356DF900A3061C /* LoginViewController.xib */; };
-		FE32B62A1F356DF900A3061C /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B60F1F356DF900A3061C /* RegistViewController.m */; };
-		FE32B62B1F356DF900A3061C /* RegistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE32B6101F356DF900A3061C /* RegistViewController.xib */; };
-		FE32B6311F356DF900A3061C /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B61E1F356DF900A3061C /* LoginService.m */; };
-		FE32B6321F356DF900A3061C /* TimeCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B6201F356DF900A3061C /* TimeCounter.m */; };
-		FE32B6331F356DF900A3061C /* CustomUserGuideScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE32B6231F356DF900A3061C /* CustomUserGuideScrollView.m */; };
 		FEB124061F4D78D3002DAA55 /* LZCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEB124051F4D78D3002DAA55 /* LZCartViewController.m */; };
 		FEB124091F4D793C002DAA55 /* LZCartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEB124081F4D793C002DAA55 /* LZCartTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -614,6 +610,18 @@
 		18DD85C61F0650F400F47095 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18DD85C81F06512100F47095 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		18F64B1A1F0E03F500DB978C /* PingFang Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Medium.ttf"; sourceTree = "<group>"; };
+		22318EC01F62D9ED0082E06E /* BRBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRBaseViewController.h; sourceTree = "<group>"; };
+		22318EC11F62D9ED0082E06E /* BRBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRBaseViewController.m; sourceTree = "<group>"; };
+		22318EC71F62D9ED0082E06E /* BRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLoginViewController.h; sourceTree = "<group>"; };
+		22318EC81F62D9ED0082E06E /* BRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLoginViewController.m; sourceTree = "<group>"; };
+		22318EC91F62D9ED0082E06E /* BRLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BRLoginViewController.xib; sourceTree = "<group>"; };
+		22318ED61F6375FE0082E06E /* BAIRUITECH_NetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAIRUITECH_NetWorkManager.h; sourceTree = "<group>"; };
+		22318ED71F6375FE0082E06E /* BAIRUITECH_NetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAIRUITECH_NetWorkManager.m; sourceTree = "<group>"; };
+		22318ED91F637BE90082E06E /* UIViewController+DCHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DCHud.h"; sourceTree = "<group>"; };
+		22318EDA1F637BE90082E06E /* UIViewController+DCHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DCHud.m"; sourceTree = "<group>"; };
+		22318EDC1F6390210082E06E /* BindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindViewController.h; sourceTree = "<group>"; };
+		22318EDD1F6390210082E06E /* BindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindViewController.m; sourceTree = "<group>"; };
+		22318EDE1F6390210082E06E /* BindViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BindViewController.xib; sourceTree = "<group>"; };
 		224B78C61F4C63E100BCC2F5 /* DC_TypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DC_TypeView.h; sourceTree = "<group>"; };
 		224B78C71F4C63E100BCC2F5 /* DC_TypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DC_TypeView.m; sourceTree = "<group>"; };
 		224B78C91F4C778D00BCC2F5 /* DCDetailLikeHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCDetailLikeHeadView.h; sourceTree = "<group>"; };
@@ -635,24 +643,6 @@
 		F3736E949C41228120EF9FC0 /* Pods-CDDStoreDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDDStoreDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CDDStoreDemo/Pods-CDDStoreDemo.release.xcconfig"; sourceTree = "<group>"; };
 		FE32B6001F356C1000A3061C /* MOBShareSDKHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOBShareSDKHelper.h; sourceTree = "<group>"; };
 		FE32B6011F356C1000A3061C /* MOBShareSDKHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOBShareSDKHelper.m; sourceTree = "<group>"; };
-		FE32B6051F356DF900A3061C /* AgreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreeViewController.h; sourceTree = "<group>"; };
-		FE32B6061F356DF900A3061C /* AgreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreeViewController.m; sourceTree = "<group>"; };
-		FE32B6071F356DF900A3061C /* AgreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgreeViewController.xib; sourceTree = "<group>"; };
-		FE32B6081F356DF900A3061C /* FixPassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FixPassWordViewController.h; sourceTree = "<group>"; };
-		FE32B6091F356DF900A3061C /* FixPassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FixPassWordViewController.m; sourceTree = "<group>"; };
-		FE32B60A1F356DF900A3061C /* FixPassWordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FixPassWordViewController.xib; sourceTree = "<group>"; };
-		FE32B60B1F356DF900A3061C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		FE32B60C1F356DF900A3061C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		FE32B60D1F356DF900A3061C /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		FE32B60E1F356DF900A3061C /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
-		FE32B60F1F356DF900A3061C /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
-		FE32B6101F356DF900A3061C /* RegistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistViewController.xib; sourceTree = "<group>"; };
-		FE32B61D1F356DF900A3061C /* LoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginService.h; sourceTree = "<group>"; };
-		FE32B61E1F356DF900A3061C /* LoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginService.m; sourceTree = "<group>"; };
-		FE32B61F1F356DF900A3061C /* TimeCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeCounter.h; sourceTree = "<group>"; };
-		FE32B6201F356DF900A3061C /* TimeCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeCounter.m; sourceTree = "<group>"; };
-		FE32B6221F356DF900A3061C /* CustomUserGuideScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUserGuideScrollView.h; sourceTree = "<group>"; };
-		FE32B6231F356DF900A3061C /* CustomUserGuideScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUserGuideScrollView.m; sourceTree = "<group>"; };
 		FEB124041F4D78D3002DAA55 /* LZCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCartViewController.h; sourceTree = "<group>"; };
 		FEB124051F4D78D3002DAA55 /* LZCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCartViewController.m; sourceTree = "<group>"; };
 		FEB124071F4D793C002DAA55 /* LZCartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCartTableViewCell.h; sourceTree = "<group>"; };
@@ -739,9 +729,10 @@
 		18DCA13A1F1F4186008BF67E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				18DCA2AE1F1F4186008BF67E /* Main */,
+				22318ED51F6375FE0082E06E /* NetWorkManager */,
 				18DCA13C1F1F4186008BF67E /* AppDelegate */,
-				FE32B6031F356DF900A3061C /* Login */,
+				22318EBE1F62D9ED0082E06E /* Login */,
+				18DCA2AE1F1F4186008BF67E /* Main */,
 				18DCA2811F1F4186008BF67E /* Home */,
 				18DCA1761F1F4186008BF67E /* Details */,
 				18DCA13F1F1F4186008BF67E /* Classify */,
@@ -1225,6 +1216,8 @@
 				18DCA1E01F1F4186008BF67E /* UIImageView+DCExtension.m */,
 				18DCA1E11F1F4186008BF67E /* UIView+DCExtension.h */,
 				18DCA1E21F1F4186008BF67E /* UIView+DCExtension.m */,
+				22318ED91F637BE90082E06E /* UIViewController+DCHud.h */,
+				22318EDA1F637BE90082E06E /* UIViewController+DCHud.m */,
 			);
 			path = "Category(分类)";
 			sourceTree = "<group>";
@@ -1904,6 +1897,38 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		22318EBE1F62D9ED0082E06E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				22318EBF1F62D9ED0082E06E /* controller */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		22318EBF1F62D9ED0082E06E /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				22318EC01F62D9ED0082E06E /* BRBaseViewController.h */,
+				22318EC11F62D9ED0082E06E /* BRBaseViewController.m */,
+				22318EC71F62D9ED0082E06E /* BRLoginViewController.h */,
+				22318EC81F62D9ED0082E06E /* BRLoginViewController.m */,
+				22318EC91F62D9ED0082E06E /* BRLoginViewController.xib */,
+				22318EDC1F6390210082E06E /* BindViewController.h */,
+				22318EDD1F6390210082E06E /* BindViewController.m */,
+				22318EDE1F6390210082E06E /* BindViewController.xib */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		22318ED51F6375FE0082E06E /* NetWorkManager */ = {
+			isa = PBXGroup;
+			children = (
+				22318ED61F6375FE0082E06E /* BAIRUITECH_NetWorkManager.h */,
+				22318ED71F6375FE0082E06E /* BAIRUITECH_NetWorkManager.m */,
+			);
+			path = NetWorkManager;
+			sourceTree = "<group>";
+		};
 		74A1EBEB1AB5059931285F7F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1928,55 +1953,6 @@
 				FE32B6011F356C1000A3061C /* MOBShareSDKHelper.m */,
 			);
 			path = ShareSDK;
-			sourceTree = "<group>";
-		};
-		FE32B6031F356DF900A3061C /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				FE32B6041F356DF900A3061C /* Controller */,
-				FE32B61C1F356DF900A3061C /* Service */,
-				FE32B6211F356DF900A3061C /* View */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		FE32B6041F356DF900A3061C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				FE32B6051F356DF900A3061C /* AgreeViewController.h */,
-				FE32B6061F356DF900A3061C /* AgreeViewController.m */,
-				FE32B6071F356DF900A3061C /* AgreeViewController.xib */,
-				FE32B6081F356DF900A3061C /* FixPassWordViewController.h */,
-				FE32B6091F356DF900A3061C /* FixPassWordViewController.m */,
-				FE32B60A1F356DF900A3061C /* FixPassWordViewController.xib */,
-				FE32B60B1F356DF900A3061C /* LoginViewController.h */,
-				FE32B60C1F356DF900A3061C /* LoginViewController.m */,
-				FE32B60D1F356DF900A3061C /* LoginViewController.xib */,
-				FE32B60E1F356DF900A3061C /* RegistViewController.h */,
-				FE32B60F1F356DF900A3061C /* RegistViewController.m */,
-				FE32B6101F356DF900A3061C /* RegistViewController.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		FE32B61C1F356DF900A3061C /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				FE32B61D1F356DF900A3061C /* LoginService.h */,
-				FE32B61E1F356DF900A3061C /* LoginService.m */,
-				FE32B61F1F356DF900A3061C /* TimeCounter.h */,
-				FE32B6201F356DF900A3061C /* TimeCounter.m */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		FE32B6211F356DF900A3061C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				FE32B6221F356DF900A3061C /* CustomUserGuideScrollView.h */,
-				FE32B6231F356DF900A3061C /* CustomUserGuideScrollView.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2050,7 +2026,7 @@
 				TargetAttributes = {
 					187E67851E7D793000722607 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = HL5KR37U7Y;
+						DevelopmentTeam = 6TZ958XNMU;
 						ProvisioningStyle = Automatic;
 					};
 					187E679E1E7D793100722607 = {
@@ -2094,14 +2070,12 @@
 			files = (
 				18DCA3B41F1F4187008BF67E /* ClassiftyGoods02.plist in Resources */,
 				18DCA3BC1F1F4187008BF67E /* CommentPic.plist in Resources */,
-				FE32B6291F356DF900A3061C /* LoginViewController.xib in Resources */,
 				18DCA3571F1F4187008BF67E /* CodeScan.bundle in Resources */,
 				18DCA3711F1F4187008BF67E /* restrictedshine.tiff in Resources */,
 				18DCA36F1F1F4187008BF67E /* line.png in Resources */,
 				22FEC26D1F5A6F9700CC6F18 /* PayCell.xib in Resources */,
 				18DCA3B31F1F4187008BF67E /* ClassiftyGoods01.plist in Resources */,
 				18DCA3BA1F1F4187008BF67E /* shareTerrace.plist in Resources */,
-				FE32B6271F356DF900A3061C /* FixPassWordViewController.xib in Resources */,
 				18DCA3BF1F1F4187008BF67E /* MyBuyFlow.plist in Resources */,
 				18DCA3C51F1F4187008BF67E /* HomeHighGoods.plist in Resources */,
 				18DCA3C21F1F4187008BF67E /* RecommendShop.plist in Resources */,
@@ -2123,13 +2097,13 @@
 				18DCA3C31F1F4187008BF67E /* CountDownShop.plist in Resources */,
 				18DCA3B21F1F4187008BF67E /* ClasiftyGoods.plist in Resources */,
 				18DCA3B71F1F4187008BF67E /* DetailRecommend.plist in Resources */,
+				22318ED21F62D9ED0082E06E /* BRLoginViewController.xib in Resources */,
 				18DCA3B11F1F4187008BF67E /* DCMySelfHeadView.xib in Resources */,
-				FE32B6251F356DF900A3061C /* AgreeViewController.xib in Resources */,
 				18DCA3B51F1F4187008BF67E /* ClassiftyGoods03.plist in Resources */,
 				18DCA3BB1F1F4187008BF67E /* ShopItem.plist in Resources */,
 				18DCA3B61F1F4187008BF67E /* ClassifyTitles.plist in Resources */,
-				FE32B62B1F356DF900A3061C /* RegistViewController.xib in Resources */,
 				18DCA3B81F1F4187008BF67E /* FiltrateItem.plist in Resources */,
+				22318EE01F6390210082E06E /* BindViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2244,7 +2218,9 @@
 				18DCA3A81F1F4187008BF67E /* DCFlowItem.m in Sources */,
 				18DCA3651F1F4187008BF67E /* ScanResultViewController.m in Sources */,
 				18DCA3641F1F4187008BF67E /* MyQRViewController.m in Sources */,
+				22318ED11F62D9ED0082E06E /* BRLoginViewController.m in Sources */,
 				18DCA3381F1F4187008BF67E /* DCCommentCell.m in Sources */,
+				22318ED81F6375FE0082E06E /* BAIRUITECH_NetWorkManager.m in Sources */,
 				18DCA3141F1F4187008BF67E /* DCListGridCell.m in Sources */,
 				18DCA31A1F1F4187008BF67E /* DCCustionHeadView.m in Sources */,
 				18DCA3891F1F4187008BF67E /* XWFilterTransitionView.m in Sources */,
@@ -2252,16 +2228,17 @@
 				18DCA3981F1F4187008BF67E /* DCYouLikeHeadView.m in Sources */,
 				18DCA3481F1F4187008BF67E /* DCCustionButton.m in Sources */,
 				18DCA3131F1F4187008BF67E /* DCGoodsSortCell.m in Sources */,
+				22318EDF1F6390210082E06E /* BindViewController.m in Sources */,
 				18DCA3871F1F4187008BF67E /* XWFilterAnimator+XWSwipe.m in Sources */,
 				18DCA31C1F1F4187008BF67E /* DCClassCategoryCell.m in Sources */,
 				18DCA3A51F1F4187008BF67E /* DCPersonalCenterViewController.m in Sources */,
 				18DCA34C1F1F4187008BF67E /* DCSelPhotos.m in Sources */,
 				18DCA31F1F1F4187008BF67E /* DCFillinOrderViewController.m in Sources */,
+				22318EDB1F637BE90082E06E /* UIViewController+DCHud.m in Sources */,
 				18DCA3721F1F4187008BF67E /* SDBrowserImageView.m in Sources */,
 				18DCA3761F1F4187008BF67E /* XWCoolAnimator+XWExplode.m in Sources */,
 				18DCA3901F1F4187008BF67E /* DCGoodsHandheldCell.m in Sources */,
 				18DCA3221F1F4187008BF67E /* DCToolsViewController.m in Sources */,
-				FE32B6321F356DF900A3061C /* TimeCounter.m in Sources */,
 				18DCA3451F1F4187008BF67E /* UIImageView+DCExtension.m in Sources */,
 				18DCA34A1F1F4187008BF67E /* DCUpDownButton.m in Sources */,
 				18DCA31B1F1F4187008BF67E /* DCHoverFlowLayout.m in Sources */,
@@ -2271,7 +2248,6 @@
 				18DCA3261F1F4187008BF67E /* DCShareItem.m in Sources */,
 				18DCA3A71F1F4187008BF67E /* DCAddressItem.m in Sources */,
 				18DCA30B1F1F4187008BF67E /* DCFiltrateViewController.m in Sources */,
-				FE32B6311F356DF900A3061C /* LoginService.m in Sources */,
 				18DCA3171F1F4187008BF67E /* DCBrandsSortHeadView.m in Sources */,
 				18DCA3A01F1F4187008BF67E /* DCChangeNickNameViewController.m in Sources */,
 				18DCA37C1F1F4187008BF67E /* XWCoolAnimator+XWScanning.m in Sources */,
@@ -2279,7 +2255,7 @@
 				18DCA35B1F1F4187008BF67E /* LBXScanResult.m in Sources */,
 				18DCA3181F1F4187008BF67E /* DCFiltrateHeaderView.m in Sources */,
 				224B78CB1F4C778D00BCC2F5 /* DCDetailLikeHeadView.m in Sources */,
-				FE32B6261F356DF900A3061C /* FixPassWordViewController.m in Sources */,
+				22318ECD1F62D9ED0082E06E /* BRBaseViewController.m in Sources */,
 				18DCA3191F1F4187008BF67E /* DCColonInsView.m in Sources */,
 				18DCA3A11F1F4187008BF67E /* DCHelpBackViewController.m in Sources */,
 				18DCA3801F1F4187008BF67E /* XWFilterAnimator+XWBoxBlur.m in Sources */,
@@ -2336,15 +2312,12 @@
 				18DCA3291F1F4187008BF67E /* DCFeatureList.m in Sources */,
 				18DCA39D1F1F4187008BF67E /* DCNavigationController.m in Sources */,
 				18DCA35E1F1F4187008BF67E /* LBXScanViewController.m in Sources */,
-				FE32B6331F356DF900A3061C /* CustomUserGuideScrollView.m in Sources */,
 				18DCA3961F1F4187008BF67E /* DCCountDownHeadView.m in Sources */,
 				18DCA33A1F1F4187008BF67E /* DCCommentFooterCell.m in Sources */,
 				18DCA3A31F1F4187008BF67E /* DCReceiverAdressViewController.m in Sources */,
 				18DCA39F1F1F4187008BF67E /* DCTabBar.m in Sources */,
 				18DCA3741F1F4187008BF67E /* SDWaitingView.m in Sources */,
-				FE32B62A1F356DF900A3061C /* RegistViewController.m in Sources */,
 				18DCA3281F1F4187008BF67E /* DCFeatureItem.m in Sources */,
-				FE32B6281F356DF900A3061C /* LoginViewController.m in Sources */,
 				18DCA37B1F1F4187008BF67E /* XWCoolAnimator+XWPortal.m in Sources */,
 				18DCA37F1F1F4187008BF67E /* XWFilterAnimator+XWBarSwipe.m in Sources */,
 				18DCA38C1F1F4187008BF67E /* DCGridItem.m in Sources */,
@@ -2356,7 +2329,6 @@
 				22FEC26C1F5A6F9700CC6F18 /* PayCell.m in Sources */,
 				18DCA3561F1F4187008BF67E /* PPNumberButton.m in Sources */,
 				18DCA30E1F1F4187008BF67E /* DCCalssSubItem.m in Sources */,
-				FE32B6241F356DF900A3061C /* AgreeViewController.m in Sources */,
 				18DCA3AB1F1F4187008BF67E /* DCHelpBackSquareCell.m in Sources */,
 				18DCA32C1F1F4187008BF67E /* DCDeatilCustomHeadView.m in Sources */,
 				18DCA34B1F1F4187008BF67E /* DCKeepNewUserData.m in Sources */,
@@ -2520,13 +2492,14 @@
 			baseConfigurationReference = B6042526F9488CF29434ADDB /* Pods-CDDStoreDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HL5KR37U7Y;
+				DEVELOPMENT_TEAM = 6TZ958XNMU;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = CDDStoreDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = CDDStoreDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SVU.RocketsChen.CDDMall1116119;
+				PRODUCT_BUNDLE_IDENTIFIER = SVU.RocketsChen.CDDMall11161198;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2536,13 +2509,14 @@
 			baseConfigurationReference = F3736E949C41228120EF9FC0 /* Pods-CDDStoreDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HL5KR37U7Y;
+				DEVELOPMENT_TEAM = 6TZ958XNMU;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = CDDStoreDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = CDDStoreDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SVU.RocketsChen.CDDMall1116119;
+				PRODUCT_BUNDLE_IDENTIFIER = SVU.RocketsChen.CDDMall11161198;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
