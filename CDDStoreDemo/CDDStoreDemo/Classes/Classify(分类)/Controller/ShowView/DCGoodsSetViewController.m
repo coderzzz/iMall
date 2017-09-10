@@ -238,11 +238,11 @@ static NSString *const DCListGridCellID = @"DCListGridCell";
     
     
     DCGoodDetailViewController *dcVc = [[DCGoodDetailViewController alloc] init];
-    dcVc.goodTitle = _setItem[indexPath.row].main_title;
-    dcVc.goodPrice = _setItem[indexPath.row].price;
-    dcVc.goodSubtitle = _setItem[indexPath.row].goods_title;
-    dcVc.shufflingArray = _setItem[indexPath.row].images;
-    dcVc.goodImageView = _setItem[indexPath.row].image_url;
+//    dcVc.goodTitle = _setItem[indexPath.row].main_title;
+//    dcVc.goodPrice = _setItem[indexPath.row].price;
+//    dcVc.goodSubtitle = _setItem[indexPath.row].goods_title;
+//    dcVc.shufflingArray = _setItem[indexPath.row].images;
+//    dcVc.goodImageView = _setItem[indexPath.row].image_url;
     
     [self.navigationController pushViewController:dcVc animated:YES];
     

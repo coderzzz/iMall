@@ -42,6 +42,8 @@
 {
     
     self.imageV = [UIImageView new];
+    self.imageV.layer.masksToBounds = YES;
+    self.imageV.contentMode = UIViewContentModeScaleToFill;
     self.imageV.backgroundColor = [UIColor blueColor];
     [self addSubview:self.imageV];
 }
@@ -58,5 +60,9 @@
 }
 
 #pragma mark - Setter Getter Methods
-
+- (void)setUrl:(NSString *)url{
+    
+    _url = url;
+    [self.imageV sd_setImageWithURL:[NSURL URLWithString:url]];
+}
 @end

@@ -13,6 +13,6 @@
 @interface DCGoodsSortCell : UICollectionViewCell
 
 /* 品牌数据 */
-@property (strong , nonatomic)DCCalssSubItem *subItem;
+@property (strong , nonatomic)DCGoodItem *subItem;
 
 @end

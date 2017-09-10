@@ -166,22 +166,26 @@
 {
     __weak typeof(self)weakSelf = self;
     DCGoodBaseViewController *goodBaseVc = [[DCGoodBaseViewController alloc] init];
-    goodBaseVc.goodTitle = _goodTitle;
-    goodBaseVc.goodPrice = _goodPrice;
-    goodBaseVc.goodSubtitle = _goodSubtitle;
-    goodBaseVc.shufflingArray = _shufflingArray;
-    goodBaseVc.goodImageView = _goodImageView;
-    goodBaseVc.changeTitleBlock = ^(BOOL isChange) {
-        if (isChange) {
-            weakSelf.title = @"图文详情";
-            weakSelf.navigationItem.titleView = nil;
-                self.scrollerView.contentSize = CGSizeMake(self.view.dc_width, 0);
-        }else{
-            weakSelf.title = nil;
-            weakSelf.navigationItem.titleView = weakSelf.bgView;
-            self.scrollerView.contentSize = CGSizeMake(self.view.dc_width * self.childViewControllers.count, 0);
-        }
-    };
+    goodBaseVc.goodItem = _goodItem;
+    goodBaseVc.features = _features;
+    
+    
+//    goodBaseVc.goodTitle = _goodTitle;
+//    goodBaseVc.goodPrice = _goodPrice;
+//    goodBaseVc.goodSubtitle = _goodSubtitle;
+//    goodBaseVc.shufflingArray = _shufflingArray;
+//    goodBaseVc.goodImageView = _goodImageView;
+//    goodBaseVc.changeTitleBlock = ^(BOOL isChange) {
+//        if (isChange) {
+//            weakSelf.title = @"图文详情";
+//            weakSelf.navigationItem.titleView = nil;
+//                self.scrollerView.contentSize = CGSizeMake(self.view.dc_width, 0);
+//        }else{
+//            weakSelf.title = nil;
+//            weakSelf.navigationItem.titleView = weakSelf.bgView;
+//            self.scrollerView.contentSize = CGSizeMake(self.view.dc_width * self.childViewControllers.count, 0);
+//        }
+//    };
     [self addChildViewController:goodBaseVc];
     
 //    DCGoodParticularsViewController *goodParticularsVc = [[DCGoodParticularsViewController alloc] init];

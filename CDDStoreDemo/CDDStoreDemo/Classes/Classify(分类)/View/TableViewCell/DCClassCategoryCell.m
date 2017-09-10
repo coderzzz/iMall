@@ -90,7 +90,7 @@
 - (void)setTitleItem:(DCClassGoodsItem *)titleItem
 {
     _titleItem = titleItem;
-    self.titleLabel.text = titleItem.title;
+    self.titleLabel.text = titleItem.name;
 }
 
 @end

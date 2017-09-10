@@ -10,4 +10,6 @@
 
 @interface DCShowTypeOneCell : UICollectionViewCell
 
+@property (nonatomic, copy) NSString *url;
+
 @end

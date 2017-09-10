@@ -45,7 +45,7 @@
 
 @property (strong, nonatomic) UIScrollView *scrollerView;
 @property (strong, nonatomic) UICollectionView *collectionView;
-@property (strong, nonatomic) WKWebView *webView;
+
 /* 选择地址弹框 */
 @property (strong , nonatomic)AddressPickerView *adPickerView;
 /* 已选组Cell */
@@ -132,17 +132,6 @@ static NSArray *lastSeleArray_;
     return _collectionView;
 }
 
-- (WKWebView *)webView
-{
-    if (!_webView) {
-        _webView = [[WKWebView alloc] initWithFrame:CGRectZero];
-        _webView.frame = CGRectMake(0,ScreenH , ScreenW, ScreenH - 50);
-        _webView.scrollView.contentInset = UIEdgeInsetsMake(DCTopNavH, 0, 0, 0);
-        _webView.scrollView.scrollIndicatorInsets = _webView.scrollView.contentInset;
-        [self.scrollerView addSubview:_webView];
-    }
-    return _webView;
-}
 
 
 #pragma mark - LifeCyle
@@ -182,31 +171,36 @@ static NSArray *lastSeleArray_;
     _dcObj = [[NSNotificationCenter defaultCenter]addObserverForName:@"ClikAddOrBuy" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         
         DCFeatureSelectionViewController *dcFeaVc = [DCFeatureSelectionViewController new];
-        __weak typeof(self)weakSelf = self;
-        dcFeaVc.userChooseBlock = ^(NSMutableArray *seleArray, NSInteger num, NSInteger tag) { //第一次更新选择的属性
-            NSString *result = [NSString stringWithFormat:@"%@ %zd件",[seleArray componentsJoinedByString:@"，"],num];
-            NSLog(@"%@",result);
-            
-            weakSelf.selected = YES;
-            NSLog(@"加入购物车");
-        };
+        dcFeaVc.goodItem = _goodItem;
+        dcFeaVc.featureAttr = _features;
+         [self setUpAlterViewControllerWith:dcFeaVc WithDistance:ScreenH * 0.8 WithDirection:XWDrawerAnimatorDirectionBottom WithParallaxEnable:YES WithFlipEnable:YES];
         
-        if (weakSelf.selected) {
-            
-            if ([note.userInfo[@"buttonTag"] isEqualToString:@"2"]) { //加入购物车
-                
-                NSLog(@"加入购物车");
-                
-            }else if ([note.userInfo[@"buttonTag"] isEqualToString:@"3"]){//立即购买
-
-                DCFillinOrderViewController *dcFillVc = [DCFillinOrderViewController new];
-                [weakSelf.navigationController pushViewController:dcFillVc animated:YES];
-            }
-            
-        }else{
-            dcFeaVc.goodImageView = _goodImageView;
-            [self setUpAlterViewControllerWith:dcFeaVc WithDistance:ScreenH * 0.8 WithDirection:XWDrawerAnimatorDirectionBottom WithParallaxEnable:YES WithFlipEnable:YES];
-        }
+//        __weak typeof(self)weakSelf = self;
+//        dcFeaVc.userChooseBlock = ^(NSMutableArray *seleArray, NSInteger num, NSInteger tag) { //第一次更新选择的属性
+//            NSString *result = [NSString stringWithFormat:@"%@ %zd件",[seleArray componentsJoinedByString:@"，"],num];
+//            NSLog(@"%@",result);
+//            
+//            weakSelf.selected = YES;
+//            NSLog(@"加入购物车");
+//        };
+//        
+//        if (weakSelf.selected) {
+//            
+//            if ([note.userInfo[@"buttonTag"] isEqualToString:@"2"]) { //加入购物车
+//                
+//                NSLog(@"加入购物车");
+//                
+//            }else if ([note.userInfo[@"buttonTag"] isEqualToString:@"3"]){//立即购买
+//
+//                DCFillinOrderViewController *dcFillVc = [DCFillinOrderViewController new];
+//                [weakSelf.navigationController pushViewController:dcFillVc animated:YES];
+//            }
+//            
+//        }else{
+//            
+////            dcFeaVc.goodImageView = _goodImageView;
+//            [self setUpAlterViewControllerWith:dcFeaVc WithDistance:ScreenH * 0.8 WithDirection:XWDrawerAnimatorDirectionBottom WithParallaxEnable:YES WithFlipEnable:YES];
+//        }
 
     }];
 }
@@ -249,7 +243,18 @@ static NSArray *lastSeleArray_;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return section == 0  ? 2 : (section == 2) ? 2 : 1;
+    
+    
+    if (section == 0) {
+        
+        return  2;
+    }
+    else if (section == 1){
+        
+        NSArray *imgs = [_goodItem.detail_imgs componentsSeparatedByString:@","];
+        return imgs.count;
+    }
+    return 2;
 }
 
 #pragma mark - <UICollectionViewDelegate>
@@ -260,10 +265,10 @@ static NSArray *lastSeleArray_;
         if (indexPath.row == 0) {
             DCDetailGoodReferralCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCDetailGoodReferralCellID forIndexPath:indexPath];
             cell.goodOldPriceLabel.text= @"200";
-            cell.goodCountLabel.text = @"累计销量：100件";
-            cell.goodTitleLabel.text = _goodTitle;
-            cell.goodPriceLabel.text = [NSString stringWithFormat:@"¥ %@",_goodPrice];
-            cell.goodSubtitleLabel.text = _goodSubtitle;
+            cell.goodCountLabel.text = [NSString stringWithFormat:@"累计销量：%@件",_goodItem.total_stock];
+            cell.goodTitleLabel.text = _goodItem.title;
+            cell.goodPriceLabel.text = [NSString stringWithFormat:@"¥ %@",_goodItem.price];
+            cell.goodSubtitleLabel.text = _goodItem.detail;
             gridcell = cell;
         }else if (indexPath.row == 1){
             DCShowTypeFourCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCShowTypeFourCellID forIndexPath:indexPath];
@@ -274,7 +279,8 @@ static NSArray *lastSeleArray_;
     }else if (indexPath.section == 1  ){
         
             DCShowTypeOneCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCShowTypeOneCellID forIndexPath:indexPath];
-            _cell = cell;
+            NSArray *imgs = [_goodItem.detail_imgs componentsSeparatedByString:@","];
+            cell.url = imgs[indexPath.row];
             gridcell = cell;
        
 //     }else if (indexPath.section == 3){
@@ -307,7 +313,8 @@ static NSArray *lastSeleArray_;
     if (kind == UICollectionElementKindSectionHeader){
         if (indexPath.section == 0) {
             DCDetailShufflingHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCDetailShufflingHeadViewID forIndexPath:indexPath];
-            headerView.shufflingArray = _shufflingArray;
+            NSArray *ary = [_goodItem.main_imgs componentsSeparatedByString:@","];
+            headerView.shufflingArray = ary;
             reusableview = headerView;
     
         }else if (indexPath.section == 1){
@@ -343,7 +350,7 @@ static NSArray *lastSeleArray_;
 #pragma mark - item宽高
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) { //商品详情
-        return (indexPath.row == 0) ? CGSizeMake(ScreenW, [DCSpeedy dc_calculateTextSizeWithText:_goodTitle WithTextFont:16 WithMaxW:ScreenW - DCMargin * 6].height + [DCSpeedy dc_calculateTextSizeWithText:_goodPrice WithTextFont:20 WithMaxW:ScreenW - DCMargin * 6].height + [DCSpeedy dc_calculateTextSizeWithText:_goodSubtitle WithTextFont:12 WithMaxW:ScreenW - DCMargin * 6].height + DCMargin * 4) : CGSizeMake(ScreenW, 30);
+        return (indexPath.row == 0) ? CGSizeMake(ScreenW, [DCSpeedy dc_calculateTextSizeWithText:_goodItem.title WithTextFont:16 WithMaxW:ScreenW - DCMargin * 6].height + [DCSpeedy dc_calculateTextSizeWithText:_goodItem.price WithTextFont:20 WithMaxW:ScreenW - DCMargin * 6].height + [DCSpeedy dc_calculateTextSizeWithText:_goodItem.detail WithTextFont:12 WithMaxW:ScreenW - DCMargin * 6].height + DCMargin * 4) : CGSizeMake(ScreenW, 30);
 //    }else if (indexPath.section == 1){//商品属性选择
 //        return CGSizeMake(ScreenW, 60);
 //    }else if (indexPath.section == 2){//商品快递信息
@@ -354,7 +361,22 @@ static NSArray *lastSeleArray_;
 //        return CGSizeMake(ScreenW, 270);
         
     }else if (indexPath.section == 1){//商品图片
-        return CGSizeMake(ScreenW, 250);
+        
+        NSArray *imgs = [_goodItem.detail_imgs componentsSeparatedByString:@","];
+        NSString *imgUrl = imgs[indexPath.row];
+        CGSize size;
+        UIImage *image= [[SDImageCache sharedImageCache]imageFromDiskCacheForKey:imgUrl];
+        if (image) {
+            size = image.size;
+        }
+        else{
+            
+            size = [UIImage getImageSizeWithURL:[NSURL URLWithString:imgUrl]];
+        }
+        CGFloat height = ScreenW * size.height/size.width;
+        
+        
+        return CGSizeMake(ScreenW, height);
     }else if (indexPath.section == 2){//商品猜你喜欢
         return CGSizeMake(ScreenW/2, 150);
     }else{
@@ -379,44 +401,22 @@ static NSArray *lastSeleArray_;
     }else if (indexPath.section == 2 && indexPath.row == 0) {
 //        [self chageUserAdress]; //跟换地址
     }else if (indexPath.section == 1){ //属性选择
-        DCFeatureSelectionViewController *dcFeaVc = [DCFeatureSelectionViewController new];
-        __weak typeof(self)weakSelf = self;
-        
-        dcFeaVc.userChooseBlock = ^(NSMutableArray *seleArray, NSInteger num, NSInteger tag) { //更新选择的属性
-            if (lastSeleArray_ == seleArray && lastNum_ == num)return; //传递过来的数据判断与上一次的相同则返回
-            NSString *result = [NSString stringWithFormat:@"%@ %zd件",[seleArray componentsJoinedByString:@"，"],num];
-//            weakSelf.cell.contentLabel.text = result;
-            lastNum_ = num;
-            lastSeleArray_ = seleArray;
-            if (tag == 0) {
-                
-            }else if(tag == 1){
-                DCFillinOrderViewController *dcFillVc = [DCFillinOrderViewController new];
-                [weakSelf.navigationController pushViewController:dcFillVc animated:YES];
-            }
-            
-//            if ([weakSelf.cell.leftTitleLable.text isEqualToString:@"已选"])return;
-//            weakSelf.cell.leftTitleLable.text = @"已选";
-        };
-        dcFeaVc.lastNum = lastNum_;
-        dcFeaVc.lastSeleArray = lastSeleArray_;
-        dcFeaVc.goodImageView = _goodImageView;
-        [self setUpAlterViewControllerWith:dcFeaVc WithDistance:ScreenH * 0.8 WithDirection:XWDrawerAnimatorDirectionBottom WithParallaxEnable:YES WithFlipEnable:YES];
+       
     }
 }
 
 
 #pragma mark - 视图滚动
 - (void)setUpViewScroller{
-    __weak typeof(self)weakSelf = self;
-    self.collectionView.mj_footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
-        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
-            !weakSelf.changeTitleBlock ? : weakSelf.changeTitleBlock(YES);
-            weakSelf.scrollerView.contentOffset = CGPointMake(0, ScreenH);
-        } completion:^(BOOL finished) {
-            [weakSelf.collectionView.mj_footer endRefreshing];
-        }];
-    }];
+//    __weak typeof(self)weakSelf = self;
+//    self.collectionView.mj_footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
+//        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
+//            !weakSelf.changeTitleBlock ? : weakSelf.changeTitleBlock(YES);
+//            weakSelf.scrollerView.contentOffset = CGPointMake(0, ScreenH);
+//        } completion:^(BOOL finished) {
+//            [weakSelf.collectionView.mj_footer endRefreshing];
+//        }];
+//    }];
     
 //    self.webView.scrollView.mj_header = [MJRefreshHeader headerWithRefreshingBlock:^{
 //        [UIView animateWithDuration:0.8 animations:^{

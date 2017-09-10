@@ -186,10 +186,30 @@
                 
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
-                successBlock(responseObject);
                 NSLog(@"%@",responseObject);
+
+                successBlock(responseObject);
                 
-                [dele.window.rootViewController showTipWithStr:responseObject[@"msg"]];
+                
+                
+                if ([responseObject isKindOfClass:[NSDictionary class]] && [[responseObject allKeys] containsObject:@"msg"]) {
+                    
+//                    NSString *msg = [NSString stringWithFormat:@"%@",responseObject[@"msg"]];
+//                    if (msg.length>0) {
+                    
+                        [dele.window.rootViewController showTipWithStr:responseObject[@"msg"]];
+//                    }
+//                    else{
+//                        
+//                        [dele.window.rootViewController hideHUD];
+//                    }
+                    
+                }else{
+                    
+                    [dele.window.rootViewController hideHUD];
+                }
+                
+                
         
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -929,19 +949,19 @@
 //获取直播、预告分类
 +(void)FinanceLiveShow_LZLGetLiveNoticeContentType:(id)param withSuccessBlock:(requestSuccess)successBlock withFailureBlock:(requestFailure)failureBlock{
     
-    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:@"/v1/index/getLiveContentType" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
+    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:@"/mall/category" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
 }
 
 //根据内容分类id获取列表
 +(void)FinanceLiveShow_LZLGetListByTypeId:(id)param withSuccessBlock:(requestSuccess)successBlock withFailureBlock:(requestFailure)failureBlock{
     
-    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypePost withUrlString:@"/v1/index/getHomePage" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
+    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:@"/mall/goodByCate" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
 }
 
 //获取排行榜分类
 +(void)FinanceLiveShow_LZLGetRankType:(id)param withSuccessBlock:(requestSuccess)successBlock withFailureBlock:(requestFailure)failureBlock{
     
-    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:@"/v1/rank/getRankingType" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
+    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:@"/mall/goodDetail" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
 }
 
 //根据排行榜分类id获取列表

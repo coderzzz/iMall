@@ -10,9 +10,18 @@
 
 @interface DCClassGoodsItem : NSObject
 
-/** 文标题  */
-@property (nonatomic, copy ,readonly) NSString *title;
-/** plist  */
-@property (nonatomic, copy ,readonly) NSString *fileName;
+@property (nonatomic, copy ,readonly) NSString *icon;
+
+@property (nonatomic, copy ,readonly) NSString *id;
+
+@property (nonatomic, copy ,readonly) NSString *name;
+
+@property (nonatomic, copy ,readonly) NSString *sort;
+
+@property (nonatomic, copy ,readonly) NSString *status;
+
+/* 右边数据 */
+@property (strong , nonatomic) NSMutableArray<DCGoodItem *> *mainItem;
+@property (assign , nonatomic) NSInteger pageIndex;
 
 @end

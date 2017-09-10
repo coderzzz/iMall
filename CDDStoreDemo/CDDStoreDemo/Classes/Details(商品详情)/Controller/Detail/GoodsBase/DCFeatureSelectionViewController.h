@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DCFeatureItem.h"
 
 @interface DCFeatureSelectionViewController : UIViewController
 
-/* 商品图片 */
-@property (strong , nonatomic)NSString *goodImageView;
+
+@property (strong, nonatomic) DCGoodItem *goodItem;
+@property (strong, nonatomic) NSMutableArray <DCFeatureItem *> *featureAttr;
+
+
 /* 上一次选择的属性 */
 @property (strong , nonatomic)NSArray *lastSeleArray;
 /* 上一次选择的数量 */

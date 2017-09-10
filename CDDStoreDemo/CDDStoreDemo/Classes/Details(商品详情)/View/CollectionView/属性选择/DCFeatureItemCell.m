@@ -66,7 +66,7 @@
 - (void)setContent:(DCFeatureList *)content
 {
     _content = content;
-    _attLabel.text = content.infoname;
+    _attLabel.text = content.name;
     
     if (content.isSelect) {
         _attLabel.textColor = [UIColor redColor];

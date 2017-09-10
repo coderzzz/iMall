@@ -20,4 +20,7 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import "MJExtension.h"
 #import "DCGoodItem.h"
+#import "UIImage+DCCircle.h"
+#import "UIImageView+WebCache.h"
+#import "DCBuyGoodItem.h"
 #endif /* PrefixHeader_pch */

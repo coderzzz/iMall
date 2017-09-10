@@ -17,4 +17,5 @@
 
 + (instancetype)dc_circleImage:(NSString *)name;
 
++ (CGSize)getImageSizeWithURL:(id)URL;
 @end

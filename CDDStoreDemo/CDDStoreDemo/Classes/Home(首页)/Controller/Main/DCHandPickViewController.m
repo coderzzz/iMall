@@ -119,7 +119,7 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
     
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
        
-        [self setUpGoodsData];
+        [self firstLoad];
     }];
     self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         
