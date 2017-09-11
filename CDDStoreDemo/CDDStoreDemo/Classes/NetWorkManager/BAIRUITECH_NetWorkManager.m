@@ -967,19 +967,19 @@
 //根据排行榜分类id获取列表
 +(void)FinanceLiveShow_LZLGetRankingListByTypeId:(id)param withSuccessBlock:(requestSuccess)successBlock withFailureBlock:(requestFailure)failureBlock{
     
-    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypePost withUrlString:@"/v1/rank/getRankingList" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
+    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:@"/mall/addCart" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
 }
 
 //获取历史搜索记录
 +(void)FinanceLiveShow_LZLGetMySearchHistoryList:(id)param withSuccessBlock:(requestSuccess)successBlock withFailureBlock:(requestFailure)failureBlock{
     
-    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypePost withUrlString:@"/v1/index/getMySearchHistoryList" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
+    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:@"/mall/getCart" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
 }
 
 //获取热门搜索记录
 +(void)FinanceLiveShow_LZLGetHotSearchList:(id)param withSuccessBlock:(requestSuccess)successBlock withFailureBlock:(requestFailure)failureBlock{
     
-    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypePost withUrlString:@"/v1/index/getHotSearchList" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
+    [BAIRUITECH_NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:@"/mall/deleteCart" withParaments:param withSuccessBlock:successBlock withFailureBlock:failureBlock progress:nil];
 }
 
 //获取搜索数据

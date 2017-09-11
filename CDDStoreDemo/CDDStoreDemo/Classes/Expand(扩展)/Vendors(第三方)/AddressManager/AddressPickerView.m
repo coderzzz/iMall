@@ -313,14 +313,14 @@ static const CGFloat kTopViewHeight=40;
     }
     
     // 区
-    for (int k=0; k<[[tempArray[twoColumn] objectForKey:@"areas"] count]; k++)
-    {
-        if ([districtStr isEqualToString:[tempArray[twoColumn] objectForKey:@"areas"][k]])
-        {
-            threeColum = k;
-            break;
-        }
-    }
+//    for (int k=0; k<[[tempArray[twoColumn] objectForKey:@"areas"] count]; k++)
+//    {
+//        if ([districtStr isEqualToString:[tempArray[twoColumn] objectForKey:@"areas"][k]])
+//        {
+//            threeColum = k;
+//            break;
+//        }
+//    }
     
     [self pickerView:_pickerView didSelectRow:oneColumn inComponent:0];
     [self pickerView:_pickerView didSelectRow:twoColumn inComponent:1];

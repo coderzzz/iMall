@@ -175,12 +175,14 @@ static NSString *const DCFeatureChoseTopCellID = @"DCFeatureChoseTopCell";
 #pragma mark - 底部按钮点击
 - (void)buttomButtonClick:(UIButton *)button
 {
-    if (_seleArray.count != _featureAttr.count && _lastSeleArray.count != _featureAttr.count) {//未选择全属性警告
+    if (!_currentGood) {//未选择全属性警告
         [SVProgressHUD showInfoWithStatus:@"请选择全属性"];
         [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
         [SVProgressHUD dismissWithDelay:1.0];
         return;
     }
+    
+    
     
     [self dismissFeatureViewControllerWithTag:button.tag];
     
@@ -237,28 +239,45 @@ static NSString *const DCFeatureChoseTopCellID = @"DCFeatureChoseTopCell";
 - (void)dismissFeatureViewControllerWithTag:(NSInteger)tag
 {
     __weak typeof(self)weakSelf = self;
-    [weakSelf dismissViewControllerAnimated:YES completion:^{
+    
+    
+    if (tag == 100) {
         
-        if (tag == 100) {
+         [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    }
+    else if (tag == 0){
+        
+        [self addCar];
+    }else{
+        
+        
+    }
+   
+}
+
+-(void)addCar{
+    
+    DCUserInfo *user = UserInfoData;
+    [BAIRUITECH_NetWorkManager FinanceLiveShow_LZLGetRankingListByTypeId:@{@"token":user.token,@"item_id":_currentGood.id,@"count":@(num_)} withSuccessBlock:^(NSDictionary *object) {
+        
+
+        
+        if([object[@"error"]intValue] == 0){
             
-        }else if (tag == 0){
+            [self dismissViewControllerAnimated:YES completion:nil];
             
         }else{
             
             
         }
-//        if (![weakSelf.cell.chooseAttLabel.text isEqualToString:@"有货"]) {//当选择全属性才传递出去
-//            if (_seleArray.count == 0) {
-//                NSMutableArray *numArray = [NSMutableArray arrayWithArray:_lastSeleArray];
-//                !weakSelf.userChooseBlock ? : weakSelf.userChooseBlock(numArray,num_,tag);
-//            }else{
-//                !weakSelf.userChooseBlock ? : weakSelf.userChooseBlock(_seleArray,num_,tag);
-//            }
-//        }
+        
+        
+    } withFailureBlock:^(NSError *error) {
+        
+        
+        
     }];
 }
-
-
 
 #pragma mark - <UICollectionViewDataSource>
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

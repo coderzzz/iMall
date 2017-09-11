@@ -12,8 +12,8 @@
 @interface LZCartViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
-@property (strong,nonatomic)NSMutableArray *dataArray;
-@property (strong,nonatomic)NSMutableArray *selectedArray;
+@property (strong,nonatomic)NSMutableArray <DCGoodItem *>*dataArray;
+@property (strong,nonatomic)NSMutableArray <DCGoodItem *>*selectedArray;
 @property (strong,nonatomic)UITableView *myTableView;
 @property (strong,nonatomic)UIButton *allSellectedButton;
 @property (strong,nonatomic)UILabel *totlePriceLabel;
@@ -23,6 +23,19 @@
 
 #pragma mark - viewController life cicle
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    [self loadCar];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    _selectedArray = [_dataArray mutableCopy];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -31,7 +44,105 @@
     [self setupCartView];
    
 }
+-(void)loadCar{
+    
+    DCUserInfo *user = UserInfoData;
+    [BAIRUITECH_NetWorkManager FinanceLiveShow_LZLGetMySearchHistoryList:@{@"token":user.token} withSuccessBlock:^(NSDictionary *object) {
+        
+        
+        
+        if([object[@"error"]intValue] == 0){
+            
+            self.dataArray = [DCGoodItem mj_objectArrayWithKeyValuesArray:object[@"data"]];
+            if (_selectedArray.count>0) {
+                
+                for (DCGoodItem *good in _selectedArray) {
+                    
+                    for (DCGoodItem *item in _dataArray) {
+                        
+                        if ([good.iid isEqualToString:item.iid]) {
+                            
+                            item.isSelect = good.isSelect;
+                        }
+                    }
+                }
+            }
 
+                
+            [self updatePrice];
+
+            
+            
+        }else{
+            
+            
+        }
+        
+        
+    } withFailureBlock:^(NSError *error) {
+        
+        
+        
+    }];
+}
+
+
+-(void)delgood:(DCGoodItem *)good{
+    
+    DCUserInfo *user = UserInfoData;
+    [BAIRUITECH_NetWorkManager FinanceLiveShow_LZLGetHotSearchList:@{@"token":user.token,@"item_id":good.iid} withSuccessBlock:^(NSDictionary *object) {
+        
+        
+        
+        if([object[@"error"]intValue] == 0){
+            
+            //            [self dismissViewControllerAnimated:YES completion:nil];
+            
+            [_dataArray removeObject:good];
+            
+            [self updatePrice];
+            
+        }else{
+            
+            
+        }
+        
+        
+    } withFailureBlock:^(NSError *error) {
+        
+        
+        
+    }];
+}
+
+
+-(void)goodOperation:(DCGoodItem *)good str:(NSString *)str{
+    
+    DCUserInfo *user = UserInfoData;
+    [BAIRUITECH_NetWorkManager FinanceLiveShow_LZLGetRankingListByTypeId:@{@"token":user.token,@"item_id":good.iid,@"count":str} withSuccessBlock:^(NSDictionary *object) {
+        
+        
+        
+        if([object[@"error"]intValue] == 0){
+            
+//            [self dismissViewControllerAnimated:YES completion:nil];
+            
+            good.count += [str intValue];
+            
+            [self updatePrice];
+            
+        }else{
+            
+            
+        }
+        
+        
+    } withFailureBlock:^(NSError *error) {
+        
+        
+        
+    }];
+}
 
 #pragma mark -- 自定义底部视图 
 - (void)setupCartView{
@@ -153,7 +264,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;
+    return _dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -163,20 +274,30 @@
     }
 
 //    DCRecommendItem *model = [self.dataArray objectAtIndex:indexPath.row];
-    
+    cell.item = _dataArray[indexPath.row];
     [cell numberAddWithBlock:^(NSInteger number) {
       
-        
+        [self goodOperation:cell.item str:@"1"];
         
     }];
     
     [cell numberCutWithBlock:^(NSInteger number) {
         
-       
+        if (number == 0) {
+            
+            [self showAlert:cell.item];
+            
+        }else{
+            
+            [self goodOperation:cell.item str:@"-1"];
+        }
+        
     }];
     
     [cell cellSelectedWithBlock:^(BOOL select) {
         
+        
+        [self updatePrice];
         
     }];
 
@@ -192,52 +313,69 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定要删除该商品?删除后无法恢复!" preferredStyle:1];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-           
-            
-        }];
         
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        
-        [alert addAction:okAction];
-        [alert addAction:cancel];
-        [self presentViewController:alert animated:YES completion:nil];
     }
 
 }
 
+- (void)showAlert:(DCGoodItem *)good{
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定要删除该商品?删除后无法恢复!" preferredStyle:1];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self delgood:good];
+        
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alert addAction:okAction];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark --- 全选按钮点击事件
+- (void)countPrice{
+    
+    
+}
+
 - (void)selectAllBtnClick:(UIButton*)button {
     button.selected = !button.selected;
-    
-//    //点击全选时,把之前已选择的全部删除
-//    for (LZGoodsModel *model in self.selectedArray) {
-//        model.select = NO;
-//    }
-//    
-//    [self.selectedArray removeAllObjects];
-//    
-//    if (button.selected) {
-//        
-//        for (LZShopModel *shop in self.dataArray) {
-//            shop.select = YES;
-//            for (LZGoodsModel *model in shop.goodsArray) {
-//                model.select = YES;
-//                [self.selectedArray addObject:model];
-//            }
-//        }
-//        
-//    } else {
-//        for (LZShopModel *shop in self.dataArray) {
-//            shop.select = NO;
-//        }
-//    }
-//    
-//    [self.myTableView reloadData];
-//    [self countPrice];
+    [self updateSelect:button];
+    [self countPrice];
 }
+
+- (void)updateSelect:(UIButton *)btn{
+    
+    for (DCGoodItem *shop in self.dataArray) {
+        
+        shop.isSelect = btn.selected;
+    }
+    
+    [self updatePrice];
+}
+
+
+- (void)updatePrice{
+    
+    float price = 0;
+    
+    for (DCGoodItem *item in _dataArray) {
+        
+        if (item.isSelect) {
+            
+            price  = price + [item.price floatValue] * item.count;
+        }
+    }
+    
+    self.totlePriceLabel.attributedText = [self LZSetString:[NSString stringWithFormat:@"¥%.2f",price/100]];
+    [self.myTableView reloadData];
+    
+    
+}
+
+
 #pragma mark --- 确认选择,提交订单按钮点击事件
 - (void)goToPayButtonClick:(UIButton*)button {
 //    if (self.selectedArray.count > 0) {

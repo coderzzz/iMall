@@ -17,6 +17,7 @@
 @property (nonatomic, copy) NSString *freight;
 
 @property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSString *iid;
 @property (nonatomic, copy) NSString *shuffling;
 
 @property (nonatomic, copy) NSString *is_shuffling;
@@ -34,4 +35,11 @@
 
 @property (nonatomic, copy ) NSString *is_collection;
 @property (nonatomic, copy ) NSArray *spec_info;
+
+
+
+//
+
+@property (nonatomic, assign) BOOL isSelect;
+@property (nonatomic, assign) int  count;
 @end

@@ -65,7 +65,7 @@
 #pragma mark - 按钮点击方法
 - (void)selectBtnClick:(UIButton*)button {
     button.selected = !button.selected;
-    
+    _item.isSelect = button.selected;
     if (cellSelectedBlock) {
         cellSelectedBlock(button.selected);
     }
@@ -84,7 +84,7 @@
 - (void)cutBtnClick:(UIButton*)button {
     NSInteger count = [self.numberLabel.text integerValue];
     count--;
-    if(count <= 0){
+    if(count < 0){
         return ;
     }
 
@@ -128,7 +128,7 @@
     //显示照片
     UIImageView* imageView = [[UIImageView alloc]init];
     imageView.image = [UIImage imageNamed:@"default_pic_1"];
-    imageView.backgroundColor = [UIColor yellowColor];
+//    imageView.backgroundColor = [UIColor yellowColor];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [bgView addSubview:imageView];
     self.lzImageView = imageView;
@@ -217,6 +217,17 @@
         make.size.mas_equalTo(CGSizeMake(30,30));
         
     }];
+}
+
+- (void)setItem:(DCGoodItem *)item{
+    
+    _item = item;
+    _selectBtn.selected = item.isSelect;
+    [_lzImageView sd_setImageWithURL:[NSURL URLWithString:item.main_imgs] placeholderImage:nil];
+    _nameLabel.text = item.title;
+    _priceLabel.text = [NSString stringWithFormat:@"¥ %.2f",[item.price floatValue]/100];
+    _numberLabel.text = [NSString stringWithFormat:@"%d",item.count];
+    
 }
 
 @end

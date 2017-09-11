@@ -15,6 +15,7 @@ typedef void(^LZNumberChangedBlock)(NSInteger number);
 typedef void(^LZCellSelectedBlock)(BOOL select);
 
 @interface LZCartTableViewCell : UITableViewCell
+@property (nonatomic ,strong) DCGoodItem *item;
 //商品数量
 
 - (void)numberAddWithBlock:(LZNumberChangedBlock)block;
